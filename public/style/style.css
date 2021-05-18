@@ -1,0 +1,253 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background-color: #fff;
+    --text-color: #15162e;
+    --text-color-secondary: #15162e;
+    --text-color-disabled: #7b758a;
+
+    --primary: #ffe907;
+    --accent: #3564ad;
+    --error: #e52320;
+    --error-transparent: #fad8d8;
+    --warning: #e52320;
+    --positive: #0d9a39;
+
+    --secondary1: #0d9a39;
+    --secondary2: #048637;
+    --secondary3: #219653;
+    --secondary4: #005127;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border: #bfbcc7 2px solid;
+}
+
+button {
+    letter-spacing: .07em;
+    display: block;
+    padding: .5em 1em;
+    margin: 1em auto;
+    font-size: 1.3em;
+    background-color: var(--secondary1);
+    border: none;
+    font-weight: 700;
+    color: white;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.562);
+    cursor: pointer;
+}
+
+header {
+    padding: 1.5em;
+    background-color: var(--secondary4);
+}
+
+header nav ul {
+    width: 100%;
+    display: flex;
+}
+
+header nav ul li {
+    font-weight: 600;
+    margin-left: 1em;
+}
+
+header nav ul li a {
+    position: relative;
+    letter-spacing: .05em;
+    color: white;
+}
+
+header nav ul li a::after {
+    display: none;
+    content: '';
+    width: 1.1em;
+    height: .7em;
+    position: absolute;
+    background-color: var(--secondary1);
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    left: calc(50% - .8em);
+    top: 130%;
+}
+
+header nav ul li a:hover::after {
+    display: block;
+}
+
+header nav ul li:first-of-type {
+    margin-left: auto;
+}
+
+/**********************/
+/* LOGIN PAGE */
+/**********************/
+
+.login {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    background-color: var(--secondary1);
+}
+
+.login__form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 3em;
+    box-shadow: rgba(0, 0, 0, 0.493) .5em .5em 3em;
+}
+
+.login__form label {
+    font-size: 1.3em;
+    display: block;
+    font-weight: 700;
+    margin: 1em 0em .5em 0em;
+}
+
+.login__form input {
+    padding: .5em;
+    font-size: 1.3em;
+}
+
+.login__error {
+    display: block;
+    max-width: 13em;
+    color: var(--error);
+}
+
+/**********************/
+/* CARS OVERVIEW PAGE */
+/**********************/
+
+.reservations h1 {
+    margin: .5em
+}
+
+.reservations__cars {
+    width: 100vw;
+}
+
+.reservations__cars li a {
+    color: white;
+}
+
+.reservations__cars li {
+    width: 100%;
+    height: 30vh;
+    position: relative;
+    color: white;
+}
+
+.reservations__cars li img {
+    filter: brightness(0.5);
+    width: 100%;
+    height: 33vh;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+}
+
+.reservations__cars li div {
+    padding: 3em;
+    position: absolute;
+}
+
+/**********************/
+/* CAR DETAIL PAGE */
+/**********************/
+
+.detail main section {
+    position: relative;
+    width: 100%;
+    height: 33vh;
+}
+
+.detail .back_button {
+    display: block;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    color: white;
+}
+
+.detail .back_button svg {
+    width: 2em;
+    height: 2em;
+    fill: #fff;
+}
+
+.detail .back_button svg path {
+    fill: inherit;
+}
+
+.detail main section:first-of-type img {
+    position: absolute;
+    filter: brightness(0.5);
+    width: 100%;
+    height: 33vh;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+}
+
+.detail main div h1 {
+    font-size: 3em;
+    color: white;
+    text-align: right;
+    padding: .5em;
+}
+
+.detail .car_info p {
+    width: clamp(300px, 40vw, 800px);
+    margin: 2em auto;
+
+}
+
+.detail .qr_code {
+    display: block;
+    margin: auto;
+}
+
+/**********************/
+/****** PROFILE ******/
+/**********************/
+
+.profile_page h1 {
+    margin: .5em;
+}
+
+.profile_page__information {
+    padding: 3em;
+}
+
+.logout_form {
+    position: absolute;
+    right: 1em;
+    top: 5em;
+}
+
+.logout_form button {
+    margin: 0
+}

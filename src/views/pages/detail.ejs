@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+
+<body class="detail">
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <section>
+            <img src="<%= car.imgUrl %>" alt="">
+            <div>
+                <a class="back_button" href="/cars">
+                    <%- include('../partials/icons/back.ejs') %>
+                </a>
+                <h1><%= car.car %> <%= car.model %></h1>
+            </div>
+        </section>
+        <section class="car_info">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit reiciendis at laudantium quos. Aliquam
+                perferendis ex expedita obcaecati hic exercitationem?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit reiciendis at laudantium quos. Aliquam
+                perferendis ex expedita obcaecati hic exercitationem?</p>
+
+            <% if(!checkedIn) { %>
+            <button class="checkin_button">Check-in</button>
+            <% } %>
+        </section>
+
+        <% if(checkedIn) { %>
+        <section><img src="<%= qr %>" alt="" class="qr_code"></section>
+        <% } %>
+    </main>
+</body>
+
+</html>

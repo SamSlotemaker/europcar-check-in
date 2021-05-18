@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+
+<body class="login">
+    <main>
+        <form action="/login" method="POST" class="login__form">
+            <h1>Login</h1>
+            <% if(error) { %>
+            <strong class="login__error">Er bestaat geen gebruiker met deze gegevens.</strong>
+            <% } %>
+
+            <label for="email">Email</label>
+            <input id="email" type="text" name="email" required>
+            <label for="password">Wachtwoord</label>
+            <input id="password" type="password" name="password" required>
+
+            <button>Log in</button>
+        </form>
+    </main>
+
+</body>
+
+</html>
