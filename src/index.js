@@ -34,7 +34,6 @@ app.post('/login', (req, res) => {
         req.session.isLoggedIn = true;
         req.session.userID = user.email;
         res.redirect('/cars')
-
     }
     else {
         res.render('login.ejs', { title: 'login', error: true })
@@ -44,7 +43,6 @@ app.post('/login', (req, res) => {
 app.post('/logout', (req, res) => {
     req.session.isLoggedIn = false;
     res.redirect('/')
-
 })
 
 // CAR OVERVIEW
@@ -53,6 +51,12 @@ app.get('/cars', checkLogin, (req, res) => {
     let reservations = user.reservations;
 
     res.render('cars.ejs', { title: 'login', reservations })
+})
+
+app.get('/cars/checkin/', checkLogin, (req, res) => {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+    res.render('check-in.ejs', { title: car.car, car })
 })
 
 // DETAIL PAGE
@@ -67,7 +71,6 @@ app.get('/cars/:car', checkLogin, (req, res) => {
         .catch(err => {
             console.error(err)
         })
-
 })
 
 app.get('/profile', checkLogin, (req, res) => {

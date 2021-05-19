@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs') %>
+
+<body class="detail">
+
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <section class="check-in">
+            <h1>Check-in</h1>
+
+            <form action="/checkin">
+
+                <fieldset class="field__id_verification">
+                    <legend>Rijbewijs verificatie</legend>
+                    <label for="photo"></label>
+                    <input type="file" id="photo">
+                </fieldset>
+
+                <fieldset class="field__deposit">
+                    <legend>Borg betalen</legend>
+
+                    <label for="name">Naam op de creditcard</label>
+                    <input type="text" id="name">
+
+                    <label for="cardnumber">Kaartnummer</label>
+                    <input type="text" id="cardnumber">
+
+                    <label for="expiry-date">Vervaldatum</label>
+                    <input type="text" id="expiry-date">
+
+                    <label for="security-code">Veiligheidscode</label>
+                    <input type="text" id="security-code">
+
+                    <label for="postal-code">Postcode</label>
+                    <input type="security-code" id="postal-code">
+
+                </fieldset>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
