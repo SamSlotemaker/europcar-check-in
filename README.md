@@ -1,5 +1,12 @@
 ## Europcar check-in
 
+[Live link](https://europcar-checkin.herokuapp.com/)
+
+test account:
+Email: test
+Password: password
+
+
 In this repo you will find the code for the project I did for Europcar and Q42. 
 
 ## Assignment

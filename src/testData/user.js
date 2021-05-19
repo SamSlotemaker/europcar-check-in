@@ -3,7 +3,7 @@ const users = [
     {
         name: 'Sam Slotemaker',
         birthDate: '06-01-2000',
-        email: 'sam2',
+        email: 'test',
         password: 'password',
         reservations: [
             {
