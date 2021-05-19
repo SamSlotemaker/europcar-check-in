@@ -1,6 +1,5 @@
 /**
  * Returns a car.
- * @constructor
  * @param {string} user - Userobject containing reservations
  * @param {string} carID - The id of the car reservation
  */

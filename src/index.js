@@ -2,9 +2,12 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cookieSession from 'cookie-session'
 import * as path from 'path';
-import { findUser, userValidates, checkLogin } from './modules/login.js'
-import { findCar } from './modules/cars.js'
-import QRCode from 'qrcode';
+import login from './routes/POST/login.js'
+import logout from './routes/POST/logout.js'
+import loginPage from './routes/GET/login.js'
+import { carOverviewPage, checkinPage, carDetailpage } from './routes/GET/car.js'
+import { checkin } from './routes/POST/car.js'
+import { findUser, checkLogin } from './modules/login.js'
 
 const app = express()
 const PORT = process.env.PORT || 3001
@@ -23,74 +26,18 @@ app.use(cookieSession({
 app.set('view engine', 'ejs')
 app.set('views', path.join(path.resolve(), 'src/views/pages'))
 
-app.get('/', (req, res) => {
-    res.render('login.ejs', { title: 'login', error: false })
-})
+//login
+app.get('/', loginPage)
+app.post('/login', login)
+app.post('/logout', logout)
 
-app.post('/login', (req, res) => {
-    const user = findUser(req.body.email)
+//cars
+app.get('/cars', checkLogin, carOverviewPage)
+app.get('/cars/checkin/', checkLogin, checkinPage)
+app.get('/cars/:car', checkLogin, carDetailpage)
+app.post('/checkin/', checkLogin, checkin)
 
-    if (userValidates(user, req.body.password)) {
-        req.session.isLoggedIn = true;
-        req.session.userID = user.email;
-        res.redirect('/cars')
-    }
-    else {
-        res.render('login.ejs', { title: 'login', error: true })
-    }
-})
-
-app.post('/logout', (req, res) => {
-    req.session.isLoggedIn = false;
-    res.redirect('/')
-})
-
-// CAR OVERVIEW
-app.get('/cars', checkLogin, (req, res) => {
-    let user = findUser(req.session.userID)
-    let reservations = user.reservations;
-
-    res.render('cars.ejs', { title: 'login', reservations })
-})
-
-app.get('/cars/checkin/', checkLogin, (req, res) => {
-    let user = findUser(req.session.userID)
-    let car = findCar(user, req.query.car)
-    res.render('check-in.ejs', { title: car.car, car })
-})
-
-// DETAIL PAGE
-app.get('/cars/:car', checkLogin, (req, res) => {
-    let user = findUser(req.session.userID)
-    let car = findCar(user, req.params.car)
-    let isCheckedIn = car.checkedIn;
-
-    QRCode.toDataURL('/scanned?id=' + req.params.car)
-        .then(url => {
-            res.render('detail.ejs', { title: car.car, car, qr: url, checkedIn: isCheckedIn })
-        })
-        .catch(err => {
-            console.error(err)
-        })
-})
-
-app.post('/checkin/', (req, res) => {
-    let user = findUser(req.session.userID)
-    let car = findCar(user, req.query.car)
-    console.log(car)
-    car.checkedIn = true;
-
-    let isCheckedIn = car.checkedIn
-
-    QRCode.toDataURL('/scanned?id=' + req.params.car)
-        .then(url => {
-            res.render('detail.ejs', { title: car.car, car, qr: url, checkedIn: isCheckedIn })
-        })
-        .catch(err => {
-            console.error(err)
-        })
-})
-
+//profile
 app.get('/profile', checkLogin, (req, res) => {
     let user = findUser(req.session.userID)
     res.render('profile.ejs', { title: 'profile', user })
