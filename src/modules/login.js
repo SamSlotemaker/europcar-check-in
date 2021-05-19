@@ -11,7 +11,7 @@ export function findUser(email) {
 }
 
 /**
- * Returns a car.
+ * Returns a user.
  * @constructor
  * @param {string} user - Userobject that equals the given email
  * @param {string} password - password the user filled in

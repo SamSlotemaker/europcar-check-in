@@ -10,8 +10,7 @@
         <section class="check-in">
             <h1>Check-in</h1>
 
-            <form action="/checkin">
-
+            <form action="/checkin?car=<%= car.id %>" method="POST">
                 <fieldset class="field__id_verification">
                     <legend>Rijbewijs verificatie</legend>
                     <label for="photo"></label>
@@ -37,6 +36,8 @@
                     <input type="security-code" id="postal-code">
 
                 </fieldset>
+
+                <button type="submit">Voltooi check-in</button>
             </form>
         </section>
     </main>

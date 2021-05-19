@@ -63,10 +63,28 @@ app.get('/cars/checkin/', checkLogin, (req, res) => {
 app.get('/cars/:car', checkLogin, (req, res) => {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.params.car)
+    let isCheckedIn = car.checkedIn;
 
     QRCode.toDataURL('/scanned?id=' + req.params.car)
         .then(url => {
-            res.render('detail.ejs', { title: car.car, car, qr: url, checkedIn: false })
+            res.render('detail.ejs', { title: car.car, car, qr: url, checkedIn: isCheckedIn })
+        })
+        .catch(err => {
+            console.error(err)
+        })
+})
+
+app.post('/checkin/', (req, res) => {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+    console.log(car)
+    car.checkedIn = true;
+
+    let isCheckedIn = car.checkedIn
+
+    QRCode.toDataURL('/scanned?id=' + req.params.car)
+        .then(url => {
+            res.render('detail.ejs', { title: car.car, car, qr: url, checkedIn: isCheckedIn })
         })
         .catch(err => {
             console.error(err)

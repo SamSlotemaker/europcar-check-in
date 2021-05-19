@@ -247,6 +247,14 @@ header nav ul li:first-of-type {
 }
 
 /* CHECKIN */
+.check-in {
+    padding: 2em;
+}
+
+.check-in fieldset {
+    padding: 2em;
+}
+
 .field__deposit label,
 .field__deposit input {
     display: block;
