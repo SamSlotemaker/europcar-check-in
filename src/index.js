@@ -9,6 +9,8 @@ import { carOverviewPage, checkinPage, carDetailpage } from './routes/GET/car.js
 import { checkin } from './routes/POST/car.js'
 import { findUser, checkLogin } from './modules/login.js'
 
+// felix id verificatie check
+
 const app = express()
 const PORT = process.env.PORT || 3001
 dotenv.config()
@@ -41,6 +43,11 @@ app.post('/checkin/', checkLogin, checkin)
 app.get('/profile', checkLogin, (req, res) => {
     let user = findUser(req.session.userID)
     res.render('profile.ejs', { title: 'profile', user })
+})
+
+//404
+app.use(function (req, res, next) {
+    res.status(404).render('404.ejs', { title: 'error: 404' })
 })
 
 app.listen(PORT, () => console.log(`app listening on localhost:${PORT}`))
