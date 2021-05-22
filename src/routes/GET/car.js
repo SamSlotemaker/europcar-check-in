@@ -1,5 +1,7 @@
 import { findUser } from '../../modules/login.js'
 import { findCar } from '../../modules/cars.js'
+import { calculateDay } from '../../modules/date.js'
+import { calculateTime } from '../../modules/date.js'
 import QRCode from 'qrcode';
 
 /**
@@ -41,6 +43,10 @@ export function carDetailpage(req, res) {
 export function checkinPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
-    res.render('check-in.ejs', { title: car.car, car })
+
+    let pickupTime = calculateDay(car.startRent) + ' ' + calculateTime(car.startRent)
+    let returnTime = calculateDay(car.endRent) + ' ' + calculateTime(car.endRent)
+
+    res.render('check-in.ejs', { title: car.car, car, pickupTime, returnTime, user })
 }
 

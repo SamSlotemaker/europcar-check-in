@@ -10,6 +10,7 @@ import QRCode from 'qrcode';
 export function checkin(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
+
     car.checkedIn = true;
 
     let isCheckedIn = car.checkedIn

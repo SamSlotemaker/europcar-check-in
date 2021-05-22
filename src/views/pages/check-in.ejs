@@ -11,9 +11,20 @@
             <h1>Check-in</h1>
 
             <form action="/checkin?car=<%= car.id %>" method="POST">
+
+                <fieldset class="field__info">
+                    <legend>Gegevens</legend>
+                    <p>Check of de gegevens correct zijn</p>
+                    <ul>
+                        <li><%= user.name %></li>
+                        <li>Bestuurder: <%= car.drivers[0].name %></li>
+                        <li><%= pickupTime %> </li>
+                        <li><%= returnTime %></li>
+                    </ul>
+                </fieldset>
                 <fieldset class="field__id_verification">
                     <legend>Rijbewijs verificatie</legend>
-                    <label for="photo"></label>
+                    <label for="photo" class="id-placeholder">klik om een foto te uploaden</label>
                     <input type="file" id="photo">
                 </fieldset>
 
@@ -26,11 +37,16 @@
                     <label for="cardnumber">Kaartnummer</label>
                     <input type="text" id="cardnumber">
 
-                    <label for="expiry-date">Vervaldatum</label>
-                    <input type="text" id="expiry-date">
-
-                    <label for="security-code">Veiligheidscode</label>
-                    <input type="text" id="security-code">
+                    <div>
+                        <div>
+                            <label for="expiry-date">Vervaldatum</label>
+                            <input type="text" id="expiry-date" placeholder="DD/MM" maxlength="5">
+                        </div>
+                        <div>
+                            <label for="security-code">Veiligheidscode</label>
+                            <input type="text" id="security-code">
+                        </div>
+                    </div>
                 </fieldset>
 
                 <div class="form_nav">

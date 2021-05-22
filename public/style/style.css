@@ -263,6 +263,7 @@ header nav ul li:first-of-type {
     padding: 2em;
     display: flex;
     width: 90vw;
+    max-width: 900px;
     height: 70vh;
     margin: auto;
     overflow: hidden;
@@ -275,10 +276,79 @@ header nav ul li:first-of-type {
     border: none;
     padding: 2em;
     color: #ffffff;
-    min-width: 90vw;
+    min-width: 100%;
     transition: all .3s ease-in-out
 }
 
+.check-in fieldset legend {
+    font-size: 1.5em;
+    color: white;
+    font-weight: 700;
+}
+
+
+/* CHECK INFO FIELD */
+.field__info ul {
+    margin: 2em 0em;
+}
+
+.field__info ul li {
+    margin-bottom: .5em;
+}
+
+/* ID VERIFICATION FIELD */
+.check-in .field__id_verification input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.check-in .id-placeholder {
+    width: clamp(200px, 25vmin, 400px);
+    height: clamp(200px, 25vmin, 400px);
+    cursor: pointer;
+    border: dashed black 3px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.check-in .field__deposit label {
+    font-weight: 700;
+}
+
+.check-in .field__deposit input {
+    width: 15em;
+    border: none;
+    padding: .5em;
+    font-size: 1em;
+    margin: .3em 0em;
+
+}
+
+.check-in .field__deposit>div {
+    display: flex;
+}
+
+.check-in .field__deposit input#expiry-date {
+    border-right: 1px solid rgba(0, 0, 0, 0.411);
+    width: 7.5em;
+}
+
+.check-in .field__deposit input#security-code {
+    border-left: 1px solid rgba(0, 0, 0, 0.411);
+    width: 7.5em;
+}
+
+
+.field__deposit label,
+.field__deposit input {
+    display: block;
+}
+
+
+
+/* CHECKIN PROGRESS BAR */
 .form_nav {
     display: flex;
     align-items: center;
@@ -317,9 +387,7 @@ header nav ul li:first-of-type {
 }
 
 .check-in .progress li {
-
     width: calc(100% / 3);
-
     display: inline-block;
     text-align: center;
 }
@@ -327,23 +395,9 @@ header nav ul li:first-of-type {
 .check-in .next,
 .check-in .prev,
 .check-in .progress {
-    /* position: absolute; */
-    /* bottom: 10%; */
     font-weight: 400;
     font-size: 1em;
-    /* left: 10%; */
 }
-
-.check-in .next {
-    /* left: auto; */
-    /* right: 10% */
-}
-
-.field__deposit label,
-.field__deposit input {
-    display: block;
-}
-
 
 
 

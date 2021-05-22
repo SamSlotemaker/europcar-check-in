@@ -12,9 +12,8 @@ const users = [
                 id: '090909',
                 car: 'Ford',
                 model: 'Ka',
-                from: '09-01-2020',
-                //start time
-                to: '12-01-2020',
+                startRent: new Date('February 1, 2021 13:30:00'),
+                endRent: new Date('February 9, 2021 16:00:00'),
                 //end time
                 imgUrl: '/style/images/fordKa.jpg',
                 checkedIn: false,
@@ -31,8 +30,8 @@ const users = [
                 id: '090910',
                 car: 'Fiat',
                 model: 'Punto',
-                from: '09-01-2020',
-                to: '12-01-2020',
+                startRent: new Date('January 3, 2021 13:30:00'),
+                endRent: new Date('January 7, 2021 16:00:00'),
                 imgUrl: '/style/images/punto.jpg',
                 checkedIn: false,
                 drivers: [
@@ -55,8 +54,8 @@ const users = [
                 id: '090911',
                 car: 'BMW',
                 model: '5 serie',
-                from: '09-01-2020',
-                to: '12-01-2020',
+                startRent: new Date('January 3, 2021 13:30:00'),
+                endRent: new Date('January 7, 2021 16:00:00'),
                 imgUrl: '/style/images/5serie.jpg',
                 checkedIn: false,
                 drivers: [
@@ -71,8 +70,8 @@ const users = [
                 id: '090912',
                 car: 'Audi',
                 model: 'A3',
-                from: '09-01-2020',
-                to: '12-01-2020',
+                startRent: new Date('January 3, 2021 13:30:00'),
+                endRent: new Date('January 7, 2021 16:00:00'),
                 imgUrl: '/style/images/a3.jpg',
                 checkedIn: false,
                 drivers: [
