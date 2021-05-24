@@ -24,11 +24,14 @@ export function carOverviewPage(req, res) {
 export function carDetailpage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.params.car)
+
+    let pickupTime = calculateDay(car.startRent) + ' ' + calculateTime(car.startRent)
+    let returnTime = calculateDay(car.endRent) + ' ' + calculateTime(car.endRent)
     let isCheckedIn = car.checkedIn;
 
     QRCode.toDataURL('/scanned?id=' + req.params.car)
         .then(url => {
-            res.render('detail.ejs', { title: car.car, car, qr: url, checkedIn: isCheckedIn })
+            res.render('detail.ejs', { title: car.car, car, qr: url, user, checkedIn: isCheckedIn, pickupTime, returnTime })
         })
         .catch(err => {
             console.error(err)

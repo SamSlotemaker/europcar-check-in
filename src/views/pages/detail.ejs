@@ -7,20 +7,28 @@
     <%- include('../partials/header.ejs') %>
 
     <main>
-        <section>
+        <section class="detail__header">
             <img src="<%= car.imgUrl %>" alt="">
             <div>
                 <a class="back_button" href="/cars">
                     <%- include('../partials/icons/back.ejs') %>
                 </a>
-                <h1><%= car.car %> <%= car.model %></h1>
+                <div class="detail__info_container">
+                    <h1><%= car.car %> <%= car.model %></h1>
+                    <ul class="detail__car_info">
+                        <li><%= user.name %></li>
+                        <li>Bestuurder: <%= car.drivers[0].name %></li>
+                        <li><%= pickupTime %> </li>
+                        <li><%= returnTime %></li>
+                    </ul>
+                </div>
             </div>
         </section>
         <section class="car_info">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit reiciendis at laudantium quos. Aliquam
-                perferendis ex expedita obcaecati hic exercitationem?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit reiciendis at laudantium quos. Aliquam
-                perferendis ex expedita obcaecati hic exercitationem?</p>
+            <p>Online inchecken van de auto zorgt er voor dat het afhaal proces een stuk vlotter verloopt.</p>
+            <p>Je doorloopt een kort proces van verificatie van het rijbewijs, en het betalen van de borg, waarna je een
+                QR code krijgt die je op locatie kunt scannen om de auto op te halen.</p>
+
 
             <% if(!checkedIn) { %>
             <a class="checkin_button" href="/cars/checkin?car=<%= car.id %>">Check-in</a>

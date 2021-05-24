@@ -208,7 +208,7 @@ header nav ul li:first-of-type {
     fill: inherit;
 }
 
-.detail main section:first-of-type img {
+.detail main .detail__header img {
     position: absolute;
     filter: brightness(0.5);
     width: 100%;
@@ -218,17 +218,19 @@ header nav ul li:first-of-type {
     z-index: -1;
 }
 
-.detail main div h1 {
-    font-size: 3em;
+.detail .detail__info_container {
     color: white;
     text-align: right;
     padding: .5em;
 }
 
+.detail .detail__info_container h1 {
+    font-size: 3em;
+}
+
 .detail .car_info p {
     width: clamp(300px, 40vw, 800px);
     margin: 2em auto;
-
 }
 
 .detail .qr_code {
@@ -290,6 +292,12 @@ header nav ul li:first-of-type {
     font-weight: 700;
 }
 
+.check-in fieldset legend>span {
+    display: block;
+    font-size: .6em;
+    font-weight: normal;
+}
+}
 
 /* CHECK INFO FIELD */
 .field__info ul {
@@ -301,10 +309,37 @@ header nav ul li:first-of-type {
 }
 
 /* ID VERIFICATION FIELD */
+.check-in .back_button {
+    top: 15%;
+    z-index: 1;
+}
+
+.check-in .back_button svg {
+    fill: var(--error);
+
+}
+
 .check-in .field__id_verification input {
     width: 0;
     height: 0;
     opacity: 0;
+}
+
+.check-in .field__id_verification .id-placeholder {
+    position: relative;
+}
+
+.check-in .field__id_verification .id-placeholder span {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.check-in .field__id_verification .id-placeholder img {
+    object-fit: cover;
+    width: 100%;
+    height: clamp(200px, 25vmin, 400px);
 }
 
 .check-in .id-placeholder {
@@ -315,6 +350,10 @@ header nav ul li:first-of-type {
     display: grid;
     place-items: center;
     text-align: center;
+}
+
+.check-in .field__id_verification select {
+    /* margin: 1em auto; */
 }
 
 .check-in .field__deposit label {

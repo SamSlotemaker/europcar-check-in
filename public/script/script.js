@@ -4,7 +4,6 @@ const nextButton = document.querySelector('.next')
 const submitButton = document.querySelector('.submit')
 const form = document.querySelector('.check-in form')
 
-
 // PROGRESSIVE FORM
 let currentTab = 0
 if (nextButton) {
@@ -55,3 +54,20 @@ function calculateFormOffset(x) {
     console.log(x * 100 + '%')
     return -x * 100 + '%'
 }
+
+
+// ID VERIFICATION
+const idImage = document.querySelector('.id-placeholder img')
+console.log(idImage)
+const idImageInput = document.querySelector('.field__id_verification input')
+console.log(idImageInput)
+
+if (idImage) {
+    idImageInput.onchange = () => {
+        const [file] = idImageInput.files
+        if (file) {
+            idImage.src = URL.createObjectURL(file)
+        }
+    }
+}
+
