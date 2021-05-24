@@ -1,7 +1,6 @@
 // user array with userdata to create the application.
 const users = [
     //leeftijd
-    //klasse voor leeftijdsgrens
     {
         name: 'Sam Slotemaker',
         birthDate: '06-01-2000',
@@ -12,9 +11,9 @@ const users = [
                 id: '090909',
                 car: 'Ford',
                 model: 'Ka',
+                //klasse voor leeftijdsgrens
                 startRent: new Date('February 1, 2021 13:30:00'),
                 endRent: new Date('February 9, 2021 16:00:00'),
-                //end time
                 imgUrl: '/style/images/fordKa.jpg',
                 checkedIn: false,
                 //checkinstatus

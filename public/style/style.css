@@ -253,19 +253,23 @@ header nav ul li:first-of-type {
 }
 
 /* CHECKIN */
-.check-in {
+.detail main section.check-in {
     padding: 2em;
+    width: 90vw;
+    margin: auto;
+    max-width: 900px;
+    height: auto;
 }
 
+
 .check-in form {
+    box-shadow: rgb(0 0 0 / 49%) 0.5em 1.5em 3em -0.4em;
     --formOffset: 0%;
     background-color: var(--secondary1);
     padding: 2em;
     display: flex;
-    width: 90vw;
-    max-width: 900px;
+    width: 100%;
     height: 70vh;
-    margin: auto;
     overflow: hidden;
     position: relative;
 }
@@ -356,6 +360,7 @@ header nav ul li:first-of-type {
     bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
+    justify-content: space-between;
     width: 90%;
 }
 
@@ -392,11 +397,26 @@ header nav ul li:first-of-type {
     text-align: center;
 }
 
+.check-in .prev {
+    visibility: hidden;
+}
+
 .check-in .next,
 .check-in .prev,
-.check-in .progress {
+.check-in .progress,
+.check-in .submit {
     font-weight: 400;
     font-size: 1em;
+    margin: 0em;
+}
+
+/* .check-in .form_nav div {
+    position: relative;
+} */
+
+.check-in .submit {
+    background-color: var(--accent);
+    display: none;
 }
 
 
