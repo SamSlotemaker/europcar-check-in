@@ -1,6 +1,10 @@
 // user array with userdata to create the application.
 const users = [
     //leeftijd
+    //gebruikersadres ter verificatie
+    //ideal betaalmethode
+
+    //borg betaling zou altijd moeten kunnen, ook 
     {
         name: 'Sam Slotemaker',
         birthDate: '06-01-2000',
@@ -62,6 +66,10 @@ const users = [
                         name: 'Sam',
                         validated: false
                     },
+                    {
+                        name: 'Martijn',
+                        validated: true
+                    }
                 ],
                 depositPayed: false
             },

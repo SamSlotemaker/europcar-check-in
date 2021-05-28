@@ -25,19 +25,19 @@
             </div>
         </section>
         <section class="car_info">
+            <% if(!checkedIn) { %>
             <p>Online inchecken van de auto zorgt er voor dat het afhaal proces een stuk vlotter verloopt.</p>
             <p>Je doorloopt een kort proces van verificatie van het rijbewijs, en het betalen van de borg, waarna je een
                 QR code krijgt die je op locatie kunt scannen om de auto op te halen.</p>
-
-
-            <% if(!checkedIn) { %>
             <a class="checkin_button" href="/cars/checkin?car=<%= car.id %>">Check-in</a>
             <% } %>
-        </section>
 
-        <% if(checkedIn) { %>
-        <section><img src="<%= qr %>" alt="" class="qr_code"></section>
-        <% } %>
+
+            <% if(checkedIn) { %>
+            <p>Scan de QR code tijdens het ophalen van de auto om het incheck proces af te ronden</p>
+            <img src="<%= qr %>" alt="" class="qr_code">
+            <% } %>
+        </section>
     </main>
 </body>
 

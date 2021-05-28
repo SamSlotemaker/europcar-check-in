@@ -41,7 +41,8 @@ a {
 }
 
 input {
-    border: #bfbcc7 2px solid;
+    border: rgb(104, 104, 104) 2px solid;
+    border-radius: .3em;
 }
 
 button {
@@ -50,17 +51,18 @@ button {
     padding: .5em 1em;
     margin: 1em auto;
     font-size: 1.3em;
-    background-color: var(--secondary1);
+    background-color: var(--primary);
+    border-radius: .3em;
     border: none;
-    font-weight: 700;
-    color: white;
+    font-weight: 800;
+    color: black;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.562);
     cursor: pointer;
 }
 
 header {
     padding: 1.5em;
-    background-color: var(--secondary4);
+    background-color: var(--secondary1);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -91,7 +93,7 @@ header nav ul li a::after {
     width: 1.1em;
     height: .7em;
     position: absolute;
-    background-color: var(--secondary1);
+    background-color: #fff;
     clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
     left: calc(50% - .8em);
     top: 130%;
@@ -159,7 +161,7 @@ header nav ul li:first-of-type {
 
 .reservations__cars li {
     width: 100%;
-    height: 30vh;
+    height: 33vh;
     position: relative;
     color: white;
 }
@@ -178,6 +180,17 @@ header nav ul li:first-of-type {
 .reservations__cars li div {
     padding: 3em;
     position: absolute;
+}
+
+.reservations__cars li strong {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    font-weight: 400;
+}
+
+.reservations__cars li strong span {
+    font-weight: 700;
 }
 
 /**********************/
@@ -246,16 +259,44 @@ header nav ul li:first-of-type {
     padding: .5em 1em;
     margin: 1em auto;
     font-size: 1.3em;
-    background-color: var(--secondary1);
+    background-color: var(--primary);
+    border-radius: .3em;
     border: none;
     font-weight: 700;
-    color: white;
+    color: black;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.562);
     cursor: pointer;
 }
 
 /* CHECKIN */
-.detail main section.check-in {
+.check-in-page {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(13, 154, 57, 1) 41%, rgba(12, 110, 42, 1) 68%);
+}
+
+.check-in-page .back_button svg {
+    width: 2em;
+    height: 2em;
+    fill: #fff;
+}
+
+.check-in-page .back_button svg path {
+    fill: inherit;
+}
+
+.check-in-page .back_button {
+    display: block;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    color: white;
+}
+
+.check-in-page main h1 {
+    color: white;
+}
+
+.check-in-page main section.check-in {
     padding: 2em;
     width: 90vw;
     margin: auto;
@@ -264,14 +305,25 @@ header nav ul li:first-of-type {
 }
 
 
+@media screen and (max-width: 600px) {
+    .check-in-page main section.check-in {
+        width: 100vw;
+        padding: 0;
+
+    }
+}
+
+
+
 .check-in form {
+    border-radius: .5em;
     box-shadow: rgb(0 0 0 / 49%) 0.5em 1.5em 3em -0.4em;
     --formOffset: 0%;
-    background-color: var(--secondary1);
+    background-color: white;
     padding: 2em;
     display: flex;
     width: 100%;
-    height: 70vh;
+    min-height: 70vh;
     overflow: hidden;
     position: relative;
 }
@@ -281,14 +333,14 @@ header nav ul li:first-of-type {
     transform: translateX(var(--formOffset));
     border: none;
     padding: 2em;
-    color: #ffffff;
+    color: var(--text-color);
     min-width: 100%;
     transition: all .3s ease-in-out
 }
 
 .check-in fieldset legend {
     font-size: 1.5em;
-    color: white;
+    color: var(--text-color);
     font-weight: 700;
 }
 
@@ -297,7 +349,7 @@ header nav ul li:first-of-type {
     font-size: .6em;
     font-weight: normal;
 }
-}
+
 
 /* CHECK INFO FIELD */
 .field__info ul {
@@ -318,6 +370,45 @@ header nav ul li:first-of-type {
     fill: var(--error);
 
 }
+
+.check-in .field__id_verification {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.check-in .field__id_verification>div:first-of-type {
+    margin-left: 1.5em;
+}
+
+.check-in .field__id_verification>div:last-of-type {
+    margin: 3em auto
+}
+
+@media screen and (min-width: 820px) {
+    .check-in .field__id_verification {
+        flex-direction: row;
+    }
+
+    .check-in .field__id_verification>div:last-of-type {
+        margin: 0em
+    }
+}
+
+.check-in .field__id_verification div ol>li {
+    margin: .5em 0em;
+}
+
+.check-in .field__id_verification div ol ul {
+    list-style-type: disc;
+    padding-left: .5em;
+}
+
+.check-in .field__id_verification div ol ul>li {
+    margin: .3em 0em;
+}
+
+
 
 .check-in .field__id_verification input {
     width: 0;
@@ -340,6 +431,8 @@ header nav ul li:first-of-type {
     object-fit: cover;
     width: 100%;
     height: clamp(200px, 25vmin, 400px);
+    filter: brightness(.4);
+    z-index: -1;
 }
 
 .check-in .id-placeholder {
@@ -352,17 +445,17 @@ header nav ul li:first-of-type {
     text-align: center;
 }
 
-.check-in .field__id_verification select {
-    /* margin: 1em auto; */
+.check-in .id-placeholder img {
+    display: none;
 }
 
+
 .check-in .field__deposit label {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .check-in .field__deposit input {
     width: 15em;
-    border: none;
     padding: .5em;
     font-size: 1em;
     margin: .3em 0em;
@@ -383,12 +476,15 @@ header nav ul li:first-of-type {
     width: 7.5em;
 }
 
-
 .field__deposit label,
 .field__deposit input {
     display: block;
 }
 
+.field__deposit .pay_button {
+    margin: 1em 0em;
+    font-size: 1em;
+}
 
 
 /* CHECKIN PROGRESS BAR */
@@ -403,28 +499,38 @@ header nav ul li:first-of-type {
     width: 90%;
 }
 
-.check-in .progress {
-    color: white;
-    display: flex;
-    --offset: 0%;
-}
 
 .check-in .progress {
+    color: #fff;
+    background-color: rgb(0, 0, 66);
+    display: flex;
+    --offset: 0%;
     position: relative;
     flex-grow: 1;
     max-width: 15em;
     justify-content: space-around;
+    align-items: center;
+    border-radius: 10000em;
+    height: 2em;
 }
 
-.check-in .progress::before {
+
+
+.check-in .progress span {
+    position: relative;
+    z-index: 10;
+}
+
+
+.check-in .progress::after {
     content: '';
-    z-index: -1;
+    z-index: 3;
     width: calc(100% / 3);
     height: 2em;
     border-radius: 10000em;
     left: var(--offset);
     top: 0%;
-    transform: translateY(-25%);
+    /* transform: translateY(-25%); */
     position: absolute;
     background: var(--accent);
     transition: all .3s ease-in-out
@@ -440,21 +546,25 @@ header nav ul li:first-of-type {
     visibility: hidden;
 }
 
-.check-in .next,
-.check-in .prev,
-.check-in .progress,
-.check-in .submit {
+.check-in .progress {
     font-weight: 400;
     font-size: 1em;
     margin: 0em;
 }
 
-/* .check-in .form_nav div {
-    position: relative;
-} */
-
+.check-in .next,
+.check-in .prev,
 .check-in .submit {
     background-color: var(--accent);
+    color: white;
+    font-weight: 600;
+    font-size: 1em;
+    margin: 0em;
+}
+
+.check-in .submit {
+    color: black;
+    background-color: var(--primary);
     display: none;
 }
 

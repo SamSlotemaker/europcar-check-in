@@ -1,10 +1,14 @@
+const monthNames = ["januari", "februari", "maart", "april", "mei", "juni",
+    "juli", "augustus", "september", "oktober", "november", "december"
+];
 
 /**
  * return formatted time as in hours:minutes
  * @param {object} date - JS date object - newDate()
  */
 export function calculateTime(date) {
-    return date.getHours() + ':' + date.getMinutes();
+    const minutes = ((date.getMinutes() == 0) ? '00' : date.getMinutes())
+    return date.getHours() + ':' + minutes;
 }
 
 /**
@@ -12,5 +16,6 @@ export function calculateTime(date) {
  * @param {object} date - JS date object - newDate()
  */
 export function calculateDay(date) {
-    return date.getDate() + '-' + (date.getMonth() + 1)
+    const month = monthNames[date.getMonth()]
+    return date.getDate() + ' ' + month
 }

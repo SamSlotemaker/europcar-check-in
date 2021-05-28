@@ -6,8 +6,8 @@ import QRCode from 'qrcode';
 
 /**
  * gets user and his reservations from the session cookie and renders the overview page
- * @param {string} req - req object
- * @param {string} res - response object
+ * @param {object} req - req object
+ * @param {object} res - response object
  */
 export function carOverviewPage(req, res) {
     let user = findUser(req.session.userID)

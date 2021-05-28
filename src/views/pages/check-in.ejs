@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('../partials/head.ejs') %>
 
-<body class="detail">
+<body class="check-in-page">
 
     <%- include('../partials/header.ejs') %>
 
@@ -31,16 +31,88 @@
                         <span>Iedere bestuurder dient zijn rijbewijs op te geven</span>
                     </legend>
 
-                    <select name="" id="">
-                        <% car.drivers.forEach(driver => { %>
-                        <option value="<%= driver.name %>"><%= driver.name %></option>
-                        <% }) %>
-                    </select>
-                    <label for="photo" class="id-placeholder">
-                        <span>klik om een foto te uploaden</span>
-                        <img src="#" alt="">
-                    </label>
-                    <input type="file" id="photo">
+                    <div>
+                        <h3>Voor alle bestuurders geldt:</h3>
+                        <ol>
+                            <li>Upload een foto van jouw gezicht, let op:
+                                <ul>
+                                    <li>Hoofddeksels niet toegestaan</li>
+                                    <li>Oren, ogen en neus dienen zichtbaar te zijn</li>
+                                    <li>Kijk recht in de camera</li>
+                                </ul>
+                            </li>
+                            <li>Upload een foto van jouw rijbewijs</li>
+                        </ol>
+
+                        <ul>
+                            <% car.drivers.forEach(driver => { %>
+                            <% if (driver.validated){ %>
+                            <li><%= driver.name %> V</li>
+                            <% } else { %>
+                            <li><%= driver.name %> X</li>
+                            <% } %>
+                            <% }) %>
+                        </ul>
+                    </div>
+                    <div>
+                        <select name="" id="">
+                            <% car.drivers.forEach(driver => { %>
+                            <option value="<%= driver.name %>"><%= driver.name %></option>
+                            <% }) %>
+                        </select>
+                        <label for="photo" class="id-placeholder">
+                            <span>klik om een foto te uploaden</span>
+                            <% car.drivers.forEach(driver => { %>
+                            <img src="/style/images/noPerson.png" alt="">
+                            <% }) %>
+                        </label>
+                        <input type="file" id="photo">
+                    </div>
+
+                </fieldset>
+                <fieldset class="field__id_verification field__person">
+                    <legend>Rijbewijs verificatie
+                        <span>Iedere bestuurder dient zijn rijbewijs op te geven</span>
+                    </legend>
+
+                    <div>
+                        <h3>Voor alle bestuurders geldt:</h3>
+                        <ol>
+                            <li>Upload een foto van jouw gezicht, let op:
+                                <ul>
+                                    <li>Hoofddeksels niet toegestaan</li>
+                                    <li>Oren, ogen en neus dienen zichtbaar te zijn</li>
+                                    <li>Kijk recht in de camera</li>
+                                </ul>
+                            </li>
+                            <li>Upload een foto van jouw rijbewijs</li>
+                        </ol>
+
+                        <ul>
+                            <% car.drivers.forEach(driver => { %>
+                            <% if (driver.validated){ %>
+                            <li><%= driver.name %> V</li>
+                            <% } else { %>
+                            <li><%= driver.name %> X</li>
+                            <% } %>
+                            <% }) %>
+                        </ul>
+                    </div>
+                    <div>
+                        <select name="" id="">
+                            <% car.drivers.forEach(driver => { %>
+                            <option value="<%= driver.name %>"><%= driver.name %></option>
+                            <% }) %>
+                        </select>
+                        <label for="photo" class="id-placeholder">
+                            <span>klik om een foto te uploaden</span>
+                            <% car.drivers.forEach(driver => { %>
+                            <img src="/style/images/noPerson.png" alt="">
+                            <% }) %>
+                        </label>
+                        <input type="file" id="photo">
+                    </div>
+
                 </fieldset>
 
                 <fieldset class="field__deposit">
@@ -62,14 +134,15 @@
                             <input type="text" id="security-code">
                         </div>
                     </div>
+                    <button type="button" class="pay_button">Betaal</button>
                 </fieldset>
 
                 <div class="form_nav">
                     <button class="prev" type="button">Vorige</button>
                     <ul class="progress">
-                        <li>Gegevens</li>
-                        <li>Verificatie</li>
-                        <li>Borg</li>
+                        <li><span>Gegevens</span></li>
+                        <li><span>Verificatie</span></li>
+                        <li><span>Borg</span></li>
                     </ul>
                     <div>
                         <button class="next" type="button">Volgende</button>
