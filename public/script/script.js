@@ -2,7 +2,7 @@
 const prevButton = document.querySelector('.prev')
 const nextButton = document.querySelector('.next')
 const submitButton = document.querySelector('.submit')
-const fields = document.querySelectorAll('.check-in form fieldset')
+const fields = document.querySelectorAll('.check-in form > fieldset')
 const form = document.querySelector('.check-in form')
 const photoButton = document.querySelector('.photo_button')
 

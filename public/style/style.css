@@ -328,7 +328,7 @@ header nav ul li:first-of-type {
     position: relative;
 }
 
-.check-in fieldset {
+.check-in form>fieldset {
     flex-grow: 1;
     transform: translateX(var(--formOffset));
     border: none;
@@ -338,13 +338,13 @@ header nav ul li:first-of-type {
     transition: all .3s ease-in-out
 }
 
-.check-in fieldset legend {
+.check-in form>fieldset legend {
     font-size: 1.5em;
     color: var(--text-color);
     font-weight: 700;
 }
 
-.check-in fieldset legend>span {
+.check-in form>fieldset legend>span {
     display: block;
     font-size: .6em;
     font-weight: normal;
@@ -471,6 +471,37 @@ header nav ul li:first-of-type {
     height: clamp(200px, 25vmin, 400px);
 }
 
+.action_button.photo_button {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.photo_button svg {
+    width: 50%;
+    height: 50%;
+}
+
+/* deposit field */
+/* what payment */
+
+
+.check-in .field__deposit #ideal:checked~fieldset:nth-of-type(1) {
+    display: block;
+}
+
+.check-in .field__deposit #credit:checked~fieldset:nth-of-type(2) {
+    display: block;
+}
+
 .check-in .field__deposit label {
     font-weight: 400;
 }
@@ -480,8 +511,24 @@ header nav ul li:first-of-type {
     padding: .5em;
     font-size: 1em;
     margin: .3em 0em;
-
 }
+
+.check-in .field__deposit>fieldset {
+    display: none;
+    border: none;
+}
+
+.check-in .field__deposit>input {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+.check-in .field__deposit>label {
+    display: inline-block;
+}
+
 
 .check-in .field__deposit>div {
     display: flex;
