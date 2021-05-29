@@ -324,7 +324,7 @@ header nav ul li:first-of-type {
     display: flex;
     width: 100%;
     min-height: 70vh;
-    overflow: hidden;
+    overflow-x: hidden;
     position: relative;
 }
 
@@ -416,7 +416,8 @@ header nav ul li:first-of-type {
     opacity: 0;
 }
 
-.check-in .field__id_verification .id-placeholder {
+.check-in .field__id_verification .id-placeholder,
+.check-in .field__id_verification .photo-placeholder {
     position: relative;
 }
 
@@ -449,6 +450,26 @@ header nav ul li:first-of-type {
     display: none;
 }
 
+.check-in .field__id_verification #webcam {
+    width: clamp(200px, 25vmin, 400px);
+    height: clamp(200px, 25vmin, 400px);
+    object-fit: cover;
+}
+
+#canvas {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.check-in .field__id_verification .photo-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: clamp(200px, 25vmin, 400px);
+    height: clamp(200px, 25vmin, 400px);
+}
 
 .check-in .field__deposit label {
     font-weight: 400;
@@ -481,7 +502,7 @@ header nav ul li:first-of-type {
     display: block;
 }
 
-.field__deposit .pay_button {
+.action_button {
     margin: 1em 0em;
     font-size: 1em;
 }
@@ -492,7 +513,7 @@ header nav ul li:first-of-type {
     display: flex;
     align-items: center;
     position: absolute;
-    bottom: 10%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
     justify-content: space-between;

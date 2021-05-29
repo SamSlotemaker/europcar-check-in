@@ -34,11 +34,10 @@
                     <div>
                         <h3>Voor alle bestuurders geldt:</h3>
                         <ol>
-                            <li>Upload een foto van jouw gezicht, let op:
+                            <li>Upload een foto van jouw rijbewijs, let op:
                                 <ul>
-                                    <li>Hoofddeksels niet toegestaan</li>
-                                    <li>Oren, ogen en neus dienen zichtbaar te zijn</li>
-                                    <li>Kijk recht in de camera</li>
+                                    <li>Het rijbewijs dient volledig zichtbaar te zijn</li>
+                                    <li>Zorg er voor dat er geen licht weerkaatst op het document</li>
                                 </ul>
                             </li>
                             <li>Upload een foto van jouw rijbewijs</li>
@@ -67,12 +66,13 @@
                             <% }) %>
                         </label>
                         <input type="file" id="photo">
+                        <button class="action_button" type="button">Upload</button>
                     </div>
 
                 </fieldset>
                 <fieldset class="field__id_verification field__person">
-                    <legend>Rijbewijs verificatie
-                        <span>Iedere bestuurder dient zijn rijbewijs op te geven</span>
+                    <legend>Persoon verificatie
+                        <span>Iedere bestuurder dient zijn of haar gezicht te fotograferen.</span>
                     </legend>
 
                     <div>
@@ -85,7 +85,7 @@
                                     <li>Kijk recht in de camera</li>
                                 </ul>
                             </li>
-                            <li>Upload een foto van jouw rijbewijs</li>
+                            <li>Maak een foto van jouw gezicht</li>
                         </ol>
 
                         <ul>
@@ -104,13 +104,18 @@
                             <option value="<%= driver.name %>"><%= driver.name %></option>
                             <% }) %>
                         </select>
-                        <label for="photo" class="id-placeholder">
-                            <span>klik om een foto te uploaden</span>
+                        <div class="photo-placeholder">
+                            <video id="webcam" autoplay playsinline width="640" height="480"></video>
+                            <img class="photo-preview" src="/style/images/transparent.png" alt="">
+
+                            <canvas id="canvas" class="d-none"></canvas>
                             <% car.drivers.forEach(driver => { %>
-                            <img src="/style/images/noPerson.png" alt="">
+                            <input type="hidden" class="photo" name="userPhoto">
                             <% }) %>
-                        </label>
-                        <input type="file" id="photo">
+                        </div>
+
+                        <button class="action_button photo_button" type="button">neem foto</button>
+                        <button class="action_button photo_upload_button" type="button">upload</button>
                     </div>
 
                 </fieldset>
@@ -134,7 +139,7 @@
                             <input type="text" id="security-code">
                         </div>
                     </div>
-                    <button type="button" class="pay_button">Betaal</button>
+                    <button type="button" class="pay_button action_button">Betaal</button>
                 </fieldset>
 
                 <div class="form_nav">

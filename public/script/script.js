@@ -4,6 +4,7 @@ const nextButton = document.querySelector('.next')
 const submitButton = document.querySelector('.submit')
 const fields = document.querySelectorAll('.check-in form fieldset')
 const form = document.querySelector('.check-in form')
+const photoButton = document.querySelector('.photo_button')
 
 // PROGRESSIVE FORM
 let currentTab = 0
@@ -95,3 +96,41 @@ if (idImage) {
     }
 }
 
+// camera capture
+const webcamElement = document.getElementById('webcam');
+const canvasElement = document.getElementById('canvas');
+console.log(canvasElement);
+const webcam = new Webcam(webcamElement, 'user', canvasElement);
+const allPhotoInputs = document.querySelectorAll('input.photo')
+const photoPreviewImg = document.querySelector('.photo-preview')
+
+const photoInput = document.querySelector('.check-in fieldset:nth-of-type(3) .photo-placeholder input')
+const nameSelect2 = document.querySelector('.check-in fieldset:nth-of-type(3) select')
+
+webcam.start()
+    .then(result => {
+        console.log("webcam started");
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+
+let pictures = []
+function handleWebcamButton() {
+    pictures[nameSelect2.selectedIndex] = webcam.snap()
+    allPhotoInputs[nameSelect2.selectedIndex].value = pictures[nameSelect2.selectedIndex]
+    photoPreviewImg.src = pictures[nameSelect2.selectedIndex];
+    photoPreviewImg.style.display = 'block'
+}
+
+nameSelect2.addEventListener('change', () => {
+    console.log(pictures)
+    if (!pictures[nameSelect2.selectedIndex]) {
+        photoPreviewImg.src = '/style/images/transparent.png'
+    } else {
+        photoPreviewImg.src = pictures[nameSelect2.selectedIndex]
+    }
+})
+
+photoButton.addEventListener('click', handleWebcamButton)
