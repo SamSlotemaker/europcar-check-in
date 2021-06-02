@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin checkin__driver_info">
+    <nav>
+        <ul>
+            <li><a href=""></a></li>
+            <li>Logo</li>
+            <li>
+                <a href=""></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Bestuurder:</h2>
+        <h1>Bestuurder naam</h1>
+        <p>Check of de volgende informatie klopt bij de hierboven genoemde bestuurder en begin vervolgens de
+            verificatie.
+        </p>
+
+        <ul>
+            <li>Naam</li>
+            <li>Geb datum</li>
+            <li>Tel nummer</li>
+        </ul>
+
+        <ul>
+            <li>Adres</li>
+            <li>plaats</li>
+            <li>postcode</li>
+            <li>land</li>
+        </ul>
+        <a href="/cars/checkin/personVerification?car=<%= car.id %>">Beginnen</a>
+        <a href="#">overslaan</a>
+    </main>
+
+</body>
+
+</html>

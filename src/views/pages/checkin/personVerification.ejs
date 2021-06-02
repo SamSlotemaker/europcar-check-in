@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin checkin__verification">
+    <nav>
+        <ul>
+            <li><a href=""></a></li>
+            <li>Logo</li>
+            <li>
+                <a href=""></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Persoons verificatie</h1>
+        <p>
+            Maak een foto van je volledige gezicht, let op:
+
+            <ul>
+                <li>Draag geen hoofddeksels.</li>
+                <li>Oren, ogen en neus zijn zichtbaar.</li>
+                <li>Kijk recht in de camera.</li>
+            </ul>
+        </p>
+        <a href="/cars/checkin/driverInfo?car=<%= car.id %>">Begrepen</a>
+        <a href="#">overslaan</a>
+    </main>
+
+</body>
+
+</html>

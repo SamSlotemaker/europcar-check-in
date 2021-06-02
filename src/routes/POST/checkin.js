@@ -6,9 +6,17 @@ import { findCar } from '../../modules/cars.js'
  * @param {object} req - req object
  * @param {object} res - response object
  */
-export function checkin(req, res) {
+export function checkInfo(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
-    car.checkedIn = true;
-    res.redirect('/cars/' + car.id)
+
+    res.redirect(`/cars/checkin/checkInfo2?car=${car.id}`)
 }
+
+export function checkInfo2(req, res) {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+
+    res.redirect(`/cars/checkin/verificationInfo?car=${car.id}`)
+}
+

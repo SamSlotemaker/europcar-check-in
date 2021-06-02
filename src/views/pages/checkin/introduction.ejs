@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin checkin__introduction">
+    <nav>
+        <ul>
+            <li><a href="">
+                    <%- include('../../partials/icons/back.ejs') %>
+                </a></li>
+            <li><img src="/style/images/europcar_logo.png" alt=""></li>
+            <li>
+                <a href="">
+
+                    <%- include('../../partials/icons/back.ejs') %>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Check-in</h1>
+        <ul class="checkin__introduction_list">
+            <li>
+                <div>
+                    <h2>Check gegevens</h2>
+                    <p>Dubbelcheck jouw gegevens om verwarring te voorkomen.</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>Persoon verificatie</h2>
+                    <p>Om er zeker van te zijn dat alle informatie klopt, moet iedere bestuurder een foto uploaden van
+                        zijn
+                        of haar rijbewijs en een foto maken van zichzelf.</p>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>Borg betalen</h2>
+                    <p>Borg kan online betaald worden met IDEAL of creditcard.</p>
+                </div>
+            </li>
+        </ul>
+
+        <p>Iedere stap kan worden overgeslagen om op locatie af te ronden</p>
+        <a class="checkin__next_button" href="/cars/checkin/checkInfo?car=<%= car.id %>">Beginnen</a>
+    </main>
+
+</body>
+
+</html>

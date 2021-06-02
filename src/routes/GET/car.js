@@ -37,19 +37,3 @@ export function carDetailpage(req, res) {
             console.error(err)
         })
 }
-
-/**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
- * @param {string} req - req object
- * @param {string} res - response object
- */
-export function checkinPage(req, res) {
-    let user = findUser(req.session.userID)
-    let car = findCar(user, req.query.car)
-
-    let pickupTime = calculateDay(car.startRent) + ' ' + calculateTime(car.startRent)
-    let returnTime = calculateDay(car.endRent) + ' ' + calculateTime(car.endRent)
-
-    res.render('check-in.ejs', { title: car.car, car, pickupTime, returnTime, user })
-}
-

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin__check_info">
+    <nav>
+        <ul>
+            <li><a href=""></a></li>
+            <li>Logo</li>
+            <li>
+                <a href=""></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Check gegevens</h1>
+        <ul>
+            <li>Borg <span>€400,-</span></li>
+            <li>Verzekering <span>€400,-</span></li>
+            <li>Totaal <span>€400,-</span></li>
+        </ul>
+        <form action="/cars/checkin/checkInfo2?car=<%= car.id %>" method="POST">
+            <button>bevestig</button>
+        </form>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin checkin__check_info">
+    <nav>
+        <ul>
+            <li><a href="#">back</a></li>
+            <li>Logo</li>
+            <li>
+                <a href="#">close</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Check gegevens</h1>
+        <ul>
+            <li>Sam Slotemaker</li>
+            <li>6 januari 2000</li>
+            <li>Starttijd</li>
+            <li>eindtijd</li>
+        </ul>
+        <ul>
+            <li>adres</li>
+            <li>Plaats</li>
+            <li>postcode</li>
+            <li>land</li>
+        </ul>
+        <a href="">wijzigen</a>
+
+        <form action="/cars/checkin/checkInfo?car=<%= car.id %>" method="POST">
+            <button>bevestig</button>
+        </form>
+    </main>
+
+</body>
+
+</html>

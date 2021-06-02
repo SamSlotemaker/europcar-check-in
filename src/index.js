@@ -5,8 +5,9 @@ import * as path from 'path';
 import login from './routes/POST/login.js'
 import logout from './routes/POST/logout.js'
 import loginPage from './routes/GET/login.js'
-import { carOverviewPage, checkinPage, carDetailpage } from './routes/GET/car.js'
-import { checkin } from './routes/POST/car.js'
+import { carOverviewPage, carDetailpage } from './routes/GET/car.js'
+import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, driverInfoPage, personVerificationPage } from './routes/GET/checkin.js'
+import { checkInfo, checkInfo2 } from './routes/POST/checkin.js'
 import { findUser, checkLogin } from './modules/login.js'
 
 // felix id verificatie check
@@ -36,8 +37,19 @@ app.post('/logout', logout)
 //cars
 app.get('/cars', checkLogin, carOverviewPage)
 app.get('/cars/checkin/', checkLogin, checkinPage)
+app.get('/cars/checkin/checkInfo', checkLogin, checkInfoPage)
+app.get('/cars/checkin/checkInfo2', checkLogin, checkInfo2Page)
+app.get('/cars/checkin/verificationInfo', checkLogin, verificationInfoPage)
+app.get('/cars/checkin/driverInfo', checkLogin, driverInfoPage)
+app.get('/cars/checkin/personVerification', checkLogin, personVerificationPage)
+
+
 app.get('/cars/:car', checkLogin, carDetailpage)
-app.post('/checkin/', checkLogin, checkin)
+
+// app.post('/checkin/', checkLogin, checkin)
+app.post('/cars/checkin/checkInfo', checkInfo)
+app.post('/cars/checkin/checkInfo2', checkInfo2)
+
 
 //profile
 app.get('/profile', checkLogin, (req, res) => {

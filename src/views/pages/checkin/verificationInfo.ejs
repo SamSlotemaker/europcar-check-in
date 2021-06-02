@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin checkin__verification">
+    <nav>
+        <ul>
+            <li><a href=""></a></li>
+            <li>Logo</li>
+            <li>
+                <a href=""></a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Identiteit verificatie</h1>
+        <p>Alle bestuurders dienen een foto te maken van hun gezicht en hun rijbewijs te valideren. In de volgende
+            stappen heb je het volgende nodig:
+            <ul>
+                <li>Een camera</li>
+                <li>Een geldig rijbewijs</li>
+            </ul>
+        </p>
+        <a href="/cars/checkin/driverInfo?car=<%= car.id %>">Begrepen</a>
+        <a href="#">overslaan</a>
+    </main>
+
+</body>
+
+</html>
