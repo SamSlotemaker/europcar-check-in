@@ -3,6 +3,7 @@ import { findCar } from '../../modules/cars.js'
 import { calculateDay } from '../../modules/date.js'
 import { calculateTime } from '../../modules/date.js'
 
+
 /**
  * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
  * @param {string} req - req object
@@ -82,5 +83,14 @@ export function personVerificationPage(req, res) {
 }
 
 
+/**
+ * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * @param {string} req - req object
+ * @param {string} res - response object
+ */
+export function documentVerificationPage(req, res) {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
 
-
+    res.render('checkin/documentVerification', { title: 'check-in', car, user })
+}

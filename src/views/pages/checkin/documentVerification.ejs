@@ -2,7 +2,8 @@
 <html lang="en">
 <%- include('../../partials/head.ejs') %>
 
-<body class="checkin checkin__person_verification">
+<body class="checkin checkin__document_verification">
+
     <nav>
         <ul>
             <li><a href=""></a></li>
@@ -14,20 +15,17 @@
     </nav>
 
     <main>
-        <h1>Persoons verificatie</h1>
+        <h1>document verificatie</h1>
         <p>
-            Maak een foto van je volledige gezicht, let op:
-
-            <ul>
-                <li>Draag geen hoofddeksels.</li>
-                <li>Oren, ogen en neus zijn zichtbaar.</li>
-                <li>Kijk recht in de camera.</li>
-            </ul>
+            upload rijbewijs
         </p>
+        <form action="/create-verification-session" method="POST">
+            <button id="verify-button">Verifieer rijbewijs</button>
+        </form>
         <a href="/cars/checkin/driverInfo?car=<%= car.id %>">Begrepen</a>
         <a href="#">overslaan</a>
     </main>
-
+    <script src="https://js.stripe.com/v3/"></script>
 </body>
 
 </html>
