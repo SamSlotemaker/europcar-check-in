@@ -24,7 +24,6 @@ export function verifyPerson(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-
     car.drivers[0].personValidated = true;
 
     res.redirect(`/cars/checkin/documentVerificationInfo?car=${car.id}`)

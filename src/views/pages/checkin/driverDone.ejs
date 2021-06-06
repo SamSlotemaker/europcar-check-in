@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin__check_info checkin checkin__driver_info">
+    <%- include('../../partials/checkin-navigation.ejs') %>
+
+    <main>
+        <section>
+            <h2>Bestuurder <%= driverNumber %>:</h2>
+            <h1><%= driver.info.name %></h1>
+            <p>Het verificatieproces van bestuurder
+                <%= driverNumber %> is afgerond. Mochten er stappen zijn
+                overgeslagen, kunnen deze op
+                locatie worden afgehandeld.
+            </p>
+
+            <div class="next_buttons_container">
+                <a class="checkin__next_button"
+                    href="/cars/checkin/personVerificationInfo?car=<%= car.id %>">Beginnen</a>
+            </div>
+        </section>
+        <%- include('../../partials/progress-bar.ejs') %>
+
+    </main>
+
+</body>
+
+</html>

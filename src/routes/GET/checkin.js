@@ -123,3 +123,16 @@ export function documentVerificationPage(req, res) {
 
     res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: false })
 }
+
+/**
+ * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * @param {string} req - req object
+ * @param {string} res - response object
+ */
+export function driverDonePage(req, res) {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+    let driver = car.drivers[0]
+
+    res.render('checkin/driverDone', { title: 'check-in', car, user, driver })
+}

@@ -11,8 +11,13 @@
             <h1><%= driver.info.name %></h1>
 
             <section class="person_photo_container">
-                <img class="person_image" src="/style/images/noPerson.png" alt="">
-                <button type="button" class="picture_button">
+                <button type="button" class="refresh_button">
+                    <%- include('../../partials/icons/refresh.ejs') %>
+                </button>
+                <video id="video" autoplay></video>
+                <canvas id="canvas"></canvas>
+
+                <button type="button" id="snap" class="picture_button">
                     <%- include('../../partials/icons/camera.ejs') %>
                 </button>
             </section>
@@ -20,7 +25,7 @@
 
             <div class="next_buttons_container">
                 <form action="/cars/checkin/verifyPerson?car=<%= car.id %>" method="POST">
-                    <button class="checkin__next_button">Upload</button>
+                    <button id="uploadButton" class="checkin__next_button disabled">Upload</button>
                 </form>
                 <a href="#">overslaan</a>
             </div>

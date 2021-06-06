@@ -109,6 +109,15 @@ header nav ul li:first-of-type {
     margin-left: auto;
 }
 
+/* disabled state */
+button.disabled,
+a.disabled {
+    opacity: .4;
+    pointer-events: none;
+    cursor: pointer;
+    filter: brightness(.5);
+}
+
 /* CSS LOADER */
 .loader {
     --total-width: clamp(100px, 20vw, 300px);
@@ -428,10 +437,10 @@ header nav ul li:first-of-type {
 /* checkin progress bar */
 .checkin__progress_bar {
     position: absolute;
-    bottom: 0;
+    bottom: 1em;
     left: 50%;
     transform: translate(-50%);
-    width: 16em;
+    width: 12em;
     margin: auto;
 }
 
@@ -460,8 +469,8 @@ header nav ul li:first-of-type {
 .checkin__progress_bar ul li {
     background-color: var(--secondary4);
     border: 3px solid var(--primary);
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
     display: grid;
     place-items: center;
     border-radius: 50%;
@@ -469,8 +478,8 @@ header nav ul li:first-of-type {
 
 .checkin__progress_bar ul li svg {
     fill: white;
-    width: 2em;
-    height: 2em;
+    width: 1.3em;
+    height: 1.3em;
 }
 
 .checkin__progress_bar ul li svg path {
@@ -665,7 +674,7 @@ header nav ul li:first-of-type {
 /* person verification info */
 .checkin__person_verification_photo .checkin__progress_bar {
     position: static;
-    margin: 2em auto;
+    margin: 3em auto;
     transform: unset;
 }
 
@@ -674,18 +683,56 @@ header nav ul li:first-of-type {
 }
 
 /* person verification */
-.checkin__person_verification_photo .person_image {
-    height: 60vh;
-    object-fit: cover;
-    width: 100%;
+.checkin__person_verification_photo h1 {
+    text-align: center;
+    margin: 0;
 }
 
 /* person verification */
 .person_photo_container {
     position: relative;
+    height: 45vh;
+    max-width: 420px;
+    margin: auto;
 }
 
+.person_photo_container .refresh_button {
+    filter: drop-shadow(1px 1px 1px black);
+    position: absolute;
+    right: -0.5em;
+    top: -0.5em;
+    display: block;
+    z-index: 1;
+    height: 1.5em;
+    width: 1.5em;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+}
+
+
+.person_photo_container .refresh_button svg {
+    height: 1.5em;
+    width: 1.5em;
+    fill: white;
+}
+
+
+.person_photo_container video,
+.person_photo_container canvas {
+    border-radius: 1em;
+    transform: scaleX(-1);
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* video */
+
 .checkin__person_verification_photo .picture_button {
+    filter: drop-shadow(1px 1px 1px black);
     position: absolute;
     bottom: -1em;
     left: calc(50% - 1em);
@@ -712,7 +759,7 @@ header nav ul li:first-of-type {
 }
 
 .checkin__document_verification .verify_document_form {
-    height: 50vh;
+    height: 42vh;
     display: grid;
     place-items: center;
 }
@@ -734,12 +781,7 @@ header nav ul li:first-of-type {
     display: none;
 }
 
-.checkin__document_verification .disabled {
-    opacity: .4;
-    pointer-events: none;
-    cursor: pointer;
-    filter: brightness(.5);
-}
+
 
 
 

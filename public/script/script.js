@@ -19,24 +19,36 @@ if (documentVerificationForm) {
     documentVerificationForm.addEventListener('submit', handleDocumentFormSubmit)
 }
 
-// page transitions
-class Fade extends highway.Transition {
-    in({ from, to, done }) {
-        const tl = new TimelineLite();
-        tl.fromTo(to, { opacity: 0 }, {
-            opacity: 1, duration: 1, onComplete: function () {
-                from.remove()
-                done()
-            }
-        })
-    }
-    out({ from, done }) {
-        done();
-    }
+
+// CODE FROM https://davidwalsh.name/browser-camera
+//camera acces
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
 }
 
-const H = new highway.Core({
-    transitions: {
-        default: Fade
-    }
+// Elements for taking the snapshot
+var canvas = document.getElementById('canvas')
+var context = canvas.getContext('2d')
+var video = document.getElementById('video')
+const refreshButton = document.querySelector('.refresh_button')
+const uploadButton = document.getElementById('uploadButton')
+
+// Trigger photo take
+document.getElementById("snap").addEventListener("click", function () {
+    let width = video.offsetWidth
+    let height = video.offsetHeight
+    context.drawImage(video, 0, 0, width, height)
+    canvas.style.opacity = 1;
+    uploadButton.classList.remove('disabled')
+});
+
+
+//refresh taken photo
+refreshButton.addEventListener('click', () => {
+    canvas.style.opacity = 0;
+    uploadButton.classList.add('disabled')
 })
