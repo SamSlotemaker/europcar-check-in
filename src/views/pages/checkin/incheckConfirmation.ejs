@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin checkin__confirmation">
+
+    <%- include('../../partials/checkin-navigation.ejs') %>
+
+    <main>
+        <h1>Incheck afronden</h1>
+        <p>U heeft uw incheck bijna afgerond. De stappen die zijn overgeslagen kunt u op locatie afmaken. Zorg er voor
+            dat u bij het afhalen de nodige spullen bij u heeft.</p>
+        <ul class="checkin__introduction_list">
+            <li class="<%= status.infoStatus %>">
+                <div>
+                    <h2>Check gegevens</h2>
+                </div>
+            </li>
+            <li class="<%= status.verifyStatus %>">
+                <div>
+                    <h2>Persoon verificatie</h2>
+                </div>
+            </li>
+            <li class="<%= status.paymentStatus %>">
+                <div>
+                    <h2>Borg betalen</h2>
+                </div>
+            </li>
+        </ul>
+
+        <p>Iedere stap kan worden overgeslagen om op locatie af te ronden</p>
+        <form action="/cars/checkin/complete?car=<%= car.id %>" method="POST">
+            <button class="checkin__next_button" href="/cars/checkin/checkInfo?car=<%= car.id %>">Inchecken</button>
+        </form>
+    </main>
+
+</body>
+
+</html>

@@ -34,7 +34,27 @@ export function verifyDocument(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
     let driver = car.drivers[0]
-    car.drivers[0].doucmentValidated = true;
+    car.drivers[0].documentValidated = true;
 
-    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: true })
+    let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
+
+    let backUrl = `/cars/checkin/documentVerificationInfo?car=${car.id}`
+
+    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: true, backUrl, status })
+}
+
+export function pay(req, res) {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+    car.depositPayed = true;
+
+    res.redirect(`/cars/checkin/confirm?car=${car.id}`)
+}
+
+export function complete(req, res) {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+    car.checkedIn = true;
+
+    res.redirect(`/cars/`)
 }

@@ -35,8 +35,8 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'sam.slotemaker@test.nl'
                         },
-                        validated: false,
-                        doucmentValidated: false,
+
+                        documentValidated: false,
                         personValidated: false
                     },
                 ],
@@ -53,8 +53,7 @@ const users = [
                 drivers: [
                     {
                         name: 'Sam',
-                        validated: false,
-                        doucmentValidated: false,
+                        documentValidated: false,
                         personValidated: false
                     },
                 ],
@@ -90,8 +89,7 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'sam.slotemaker@test.nl'
                         },
-                        validated: false,
-                        doucmentValidated: false,
+                        documentValidated: false,
                         personValidated: false
                     },
                     {
@@ -101,8 +99,7 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'martijn.tromp@test.nl'
                         },
-                        validated: true,
-                        doucmentValidated: false,
+                        documentValidated: false,
                         personValidated: false
                     }
                 ],
@@ -124,8 +121,7 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'sam.slotemaker@test.nl'
                         },
-                        validated: false,
-                        doucmentValidated: false,
+                        documentValidated: false,
                         personValidated: false
                     },
                 ],

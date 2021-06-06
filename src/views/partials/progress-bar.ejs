@@ -1,12 +1,12 @@
 <section class="checkin__progress_bar">
     <ul>
-        <li>
+        <li class="<%= status.infoStatus %>">
             <%- include('./icons/notes.ejs') %>
         </li>
-        <li>
+        <li class="<%= status.verifyStatus %>">
             <%- include('./icons/id.ejs') %>
         </li>
-        <li>
+        <li class="<%= status.paymentStatus %>">
             <%- include('./icons/credit-card.ejs') %>
         </li>
     </ul>

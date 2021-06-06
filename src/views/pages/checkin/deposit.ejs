@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+
+<body class="checkin checkin__deposit">
+
+    <%- include('../../partials/checkin-navigation.ejs') %>
+
+    <main>
+        <section>
+
+            <h1>Borg betalen</h1>
+            <section id="payment_form" action="">
+                <section>
+                    <h2>Kies een betaalmethode</h2>
+                    <input type="radio" name="payment" id="ideal" value="ideal">
+                    <label for="ideal">
+                        <img src="/style/images/ideal.svg" alt="">
+                    </label>
+                    <input type="radio" name="payment" id="creditcard" value="creditcard">
+                    <label for="creditcard"><img src="/style/images/credit-card-logos.png" alt=""></label>
+                </section>
+                <form class="fieldset_ideal">
+                    <label for="">Ideal</label>
+                    <input type="text">
+                </form>
+                <form class="fieldset_creditcard">
+                    <label for="">Creditcard</label>
+                    <input type="text">
+                </form>
+            </section>
+
+            <div class="next_buttons_container">
+                <form action="/cars/checkin/pay?car=<%= car.id %>" method="POST">
+                    <button id="uploadButton" class="checkin__next_button">Betalen</button>
+                </form>
+                <a href="/cars/checkin/confirm?car=<%= car.id %>">overslaan</a>
+            </div>
+
+
+        </section>
+        <%- include('../../partials/progress-bar.ejs') %>
+    </main>
+</body>
+
+</html>

@@ -6,7 +6,7 @@
 
     <%- include('../../partials/checkin-navigation.ejs') %>
 
-    <main data-router-wrapper>
+    <main>
         <section>
 
             <h1><%= driver.info.name %></h1>
@@ -37,7 +37,7 @@
                 <% } else { %>
                 <a class="checkin__next_button disabled" href="">Verder</a>
                 <% } %>
-                <a href="#">overslaan</a>
+                <a href="/cars/checkin/driverDone?car=<%= car.id %>">overslaan</a>
             </div>
         </section>
         <%- include('../../partials/progress-bar.ejs') %>

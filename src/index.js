@@ -6,8 +6,8 @@ import login from './routes/POST/login.js'
 import logout from './routes/POST/logout.js'
 import loginPage from './routes/GET/login.js'
 import { carOverviewPage, carDetailpage } from './routes/GET/car.js'
-import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, driverInfoPage, personVerificationInfoPage, personVerificationPage, documentVerificationPage, documentVerificationInfoPage } from './routes/GET/checkin.js'
-import { checkInfo, checkInfo2, verifyDocument, verifyPerson } from './routes/POST/checkin.js'
+import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, confirmationPage, driverInfoPage, depositPage, driverDonePage, personVerificationInfoPage, personVerificationPage, documentVerificationPage, documentVerificationInfoPage } from './routes/GET/checkin.js'
+import { checkInfo, checkInfo2, verifyDocument, verifyPerson, pay, complete } from './routes/POST/checkin.js'
 import { findUser, checkLogin } from './modules/login.js'
 import stripe from 'stripe'
 
@@ -39,21 +39,33 @@ app.get('/cars', checkLogin, carOverviewPage)
 
 //all checkin routes
 app.get('/cars/checkin/', checkLogin, checkinPage)
+//check info pages
 app.get('/cars/checkin/checkInfo', checkLogin, checkInfoPage)
 app.get('/cars/checkin/checkInfo2', checkLogin, checkInfo2Page)
+//verification pages
 app.get('/cars/checkin/verificationInfo', checkLogin, verificationInfoPage)
 app.get('/cars/checkin/driverInfo', checkLogin, driverInfoPage)
 app.get('/cars/checkin/personVerificationInfo', checkLogin, personVerificationInfoPage)
 app.get('/cars/checkin/personVerification', checkLogin, personVerificationPage)
 app.get('/cars/checkin/documentVerificationInfo', checkLogin, documentVerificationInfoPage)
 app.get('/cars/checkin/documentVerification', checkLogin, documentVerificationPage)
+//driver completed page
+app.get('/cars/checkin/driverDone', checkLogin, driverDonePage)
+//deposit page
+app.get('/cars/checkin/deposit', checkLogin, depositPage)
+app.get('/cars/checkin/confirm', checkLogin, confirmationPage)
 
+//detail page
 app.get('/cars/:car', checkLogin, carDetailpage)
 
+//POST routes
 app.post('/cars/checkin/checkInfo', checkInfo)
 app.post('/cars/checkin/checkInfo2', checkInfo2)
 app.post('/cars/checkin/verifyPerson', verifyPerson)
 app.post('/cars/checkin/verifyDocument', verifyDocument)
+app.post('/cars/checkin/pay', pay)
+app.post('/cars/checkin/complete', complete)
+
 
 
 

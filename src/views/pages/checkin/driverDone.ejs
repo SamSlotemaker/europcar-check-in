@@ -15,10 +15,7 @@
                 locatie worden afgehandeld.
             </p>
 
-            <div class="next_buttons_container">
-                <a class="checkin__next_button"
-                    href="/cars/checkin/personVerificationInfo?car=<%= car.id %>">Beginnen</a>
-            </div>
+            <a class="checkin__next_button" href="/cars/checkin/deposit?car=<%= car.id %>">Verder</a>
         </section>
         <%- include('../../partials/progress-bar.ejs') %>
 
