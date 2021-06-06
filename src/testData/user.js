@@ -52,7 +52,12 @@ const users = [
                 checkedIn: false,
                 drivers: [
                     {
-                        name: 'Sam',
+                        info: {
+                            name: 'Sam',
+                            phone: '0612425243',
+                            birthDate: '06-01-2000',
+                            email: 'sam.slotemaker@test.nl'
+                        },
                         documentValidated: false,
                         personValidated: false
                     },
