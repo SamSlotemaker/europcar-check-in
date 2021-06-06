@@ -2,38 +2,37 @@
 <html lang="en">
 <%- include('../../partials/head.ejs') %>
 
-<body class="checkin checkin__driver_info">
-    <nav>
-        <ul>
-            <li><a href=""></a></li>
-            <li>Logo</li>
-            <li>
-                <a href=""></a>
-            </li>
-        </ul>
-    </nav>
+<body class="checkin__check_info checkin checkin__driver_info">
+    <%- include('../../partials/checkin-navigation.ejs') %>
 
     <main>
-        <h2>Bestuurder:</h2>
-        <h1>Bestuurder naam</h1>
-        <p>Check of de volgende informatie klopt bij de hierboven genoemde bestuurder en begin vervolgens de
-            verificatie.
-        </p>
+        <section>
+            <h2>Bestuurder <%= driverNumber %>:</h2>
+            <h1><%= driver.info.name %></h1>
+            <p>Check of de volgende informatie klopt bij de hierboven genoemde bestuurder en begin vervolgens de
+                verificatie.
+            </p>
 
-        <ul>
-            <li>Naam</li>
-            <li>Geb datum</li>
-            <li>Tel nummer</li>
-        </ul>
+            <ul class="info_list">
+                <li><%= driver.info.name %></li>
+                <li><%= driver.info.birthDate %></li>
+            </ul>
 
-        <ul>
-            <li>Adres</li>
-            <li>plaats</li>
-            <li>postcode</li>
-            <li>land</li>
-        </ul>
-        <a href="/cars/checkin/personVerification?car=<%= car.id %>">Beginnen</a>
-        <a href="#">overslaan</a>
+            <ul class="info_list">
+                <li><%= driver.info.phone %></li>
+                <li><%= driver.info.email %></li>
+            </ul>
+
+
+
+            <div class="next_buttons_container">
+                <a class="checkin__next_button"
+                    href="/cars/checkin/personVerificationInfo?car=<%= car.id %>">Beginnen</a>
+                <a href="#">overslaan</a>
+            </div>
+        </section>
+        <%- include('../../partials/progress-bar.ejs') %>
+
     </main>
 
 </body>

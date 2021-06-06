@@ -2,30 +2,31 @@
 <html lang="en">
 <%- include('../../partials/head.ejs') %>
 
-<body class="checkin checkin__person_verification">
-    <nav>
-        <ul>
-            <li><a href=""></a></li>
-            <li>Logo</li>
-            <li>
-                <a href=""></a>
-            </li>
-        </ul>
-    </nav>
+<body class="checkin checkin__person_verification_photo">
+
+    <%- include('../../partials/checkin-navigation.ejs') %>
 
     <main>
-        <h1>Persoons verificatie</h1>
-        <p>
-            Maak een foto van je volledige gezicht, let op:
+        <section>
+            <h1><%= driver.info.name %></h1>
 
-            <ul>
-                <li>Draag geen hoofddeksels.</li>
-                <li>Oren, ogen en neus zijn zichtbaar.</li>
-                <li>Kijk recht in de camera.</li>
-            </ul>
-        </p>
-        <a href="/cars/checkin/driverInfo?car=<%= car.id %>">Begrepen</a>
-        <a href="#">overslaan</a>
+            <section class="person_photo_container">
+                <img class="person_image" src="/style/images/noPerson.png" alt="">
+                <button type="button" class="picture_button">
+                    <%- include('../../partials/icons/camera.ejs') %>
+                </button>
+            </section>
+
+
+            <div class="next_buttons_container">
+                <form action="/cars/checkin/verifyPerson?car=<%= car.id %>" method="POST">
+                    <button class="checkin__next_button">Upload</button>
+                </form>
+                <a href="#">overslaan</a>
+            </div>
+        </section>
+        <%- include('../../partials/progress-bar.ejs') %>
+
     </main>
 
 </body>

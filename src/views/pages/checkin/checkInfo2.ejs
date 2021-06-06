@@ -2,27 +2,23 @@
 <html lang="en">
 <%- include('../../partials/head.ejs') %>
 
-<body class="checkin__check_info">
-    <nav>
-        <ul>
-            <li><a href=""></a></li>
-            <li>Logo</li>
-            <li>
-                <a href=""></a>
-            </li>
-        </ul>
-    </nav>
+<body class="checkin checkin__check_info2">
 
-    <main>
-        <h1>Check gegevens</h1>
-        <ul>
-            <li>Borg <span>€400,-</span></li>
-            <li>Verzekering <span>€400,-</span></li>
-            <li>Totaal <span>€400,-</span></li>
-        </ul>
-        <form action="/cars/checkin/checkInfo2?car=<%= car.id %>" method="POST">
-            <button>bevestig</button>
-        </form>
+    <%- include('../../partials/checkin-navigation.ejs') %>
+
+    <main data-router-wrapper>
+        <section data-router-view class="home">
+            <h1>Check gegevens</h1>
+            <ul>
+                <li>Borg <span>€400,-</span></li>
+                <li>Verzekering <span>€49,-</span></li>
+                <li>Totaal <span>€449,-</span></li>
+            </ul>
+            <form action="/cars/checkin/checkInfo2?car=<%= car.id %>" method="POST">
+                <button class="checkin__next_button">bevestig</button>
+            </form>
+        </section>
+        <%- include('../../partials/progress-bar.ejs') %>
     </main>
 
 </body>

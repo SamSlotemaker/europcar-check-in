@@ -3,35 +3,35 @@
 <%- include('../../partials/head.ejs') %>
 
 <body class="checkin checkin__check_info">
-    <nav>
-        <ul>
-            <li><a href="#">back</a></li>
-            <li>Logo</li>
-            <li>
-                <a href="#">close</a>
-            </li>
-        </ul>
-    </nav>
+
+    <%- include('../../partials/checkin-navigation.ejs') %>
 
     <main>
-        <h1>Check gegevens</h1>
-        <ul>
-            <li>Sam Slotemaker</li>
-            <li>6 januari 2000</li>
-            <li>Starttijd</li>
-            <li>eindtijd</li>
-        </ul>
-        <ul>
-            <li>adres</li>
-            <li>Plaats</li>
-            <li>postcode</li>
-            <li>land</li>
-        </ul>
-        <a href="">wijzigen</a>
+        <section>
+            <h1>Check gegevens</h1>
 
-        <form action="/cars/checkin/checkInfo?car=<%= car.id %>" method="POST">
-            <button>bevestig</button>
-        </form>
+            <ul class="info_list">
+
+                <li> <%= user.name %></li>
+                <li><%= user.birthDate %></li>
+                <li><%= pickupTime %></li>
+                <li><%= returnTime %></li>
+            </ul>
+
+            <ul class="info_list">
+                <li><%= user.adress.street %></li>
+                <li><%= user.adress.city %></li>
+                <li><%= user.adress.zip %></li>
+                <li><%= user.adress.country %></li>
+            </ul>
+
+            <a href="#" class="change_info">Wijzigen</a>
+
+            <form action="/cars/checkin/checkInfo?car=<%= car.id %>" method="POST">
+                <button class="checkin__next_button">bevestig</button>
+            </form>
+        </section>
+        <%- include('../../partials/progress-bar.ejs') %>
     </main>
 
 </body>

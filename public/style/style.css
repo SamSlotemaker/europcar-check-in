@@ -23,6 +23,8 @@
     --secondary2: #048637;
     --secondary3: #219653;
     --secondary4: #005127;
+
+    --ball-color: #ffe907;
 }
 
 body {
@@ -105,6 +107,75 @@ header nav ul li a:hover::after {
 
 header nav ul li:first-of-type {
     margin-left: auto;
+}
+
+/* CSS LOADER */
+.loader {
+    --total-width: clamp(100px, 20vw, 300px);
+    --ball-width: calc(var(--total-width) / 4);
+    width: var(--total-width);
+    height: var(--total-width);
+    position: relative;
+}
+
+.loader span {
+    --animation-time: 1s;
+    width: var(--ball-width);
+    height: var(--ball-width);
+    background-color: var(--ball-color);
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    animation: fade var(--animation-time) ease-in infinite;
+    animation-delay: calc((var(--animation-time)/6) * var(--order, 0));
+}
+
+.loader span:nth-of-type(1) {
+    top: 0;
+    left: calc((var(--total-width) / 2) - var(--ball-width) / 2);
+
+}
+
+.loader span:nth-of-type(2) {
+    --order: 1;
+    top: 20%;
+    right: 0;
+
+}
+
+.loader span:nth-of-type(3) {
+    --order: 2;
+    bottom: 20%;
+    right: 0;
+}
+
+.loader span:nth-of-type(4) {
+    --order: 3;
+    bottom: 0;
+    left: calc((var(--total-width) / 2) - var(--ball-width) / 2);
+}
+
+.loader span:nth-of-type(5) {
+    --order: 4;
+    bottom: 20%;
+    left: 0;
+}
+
+.loader span:nth-of-type(6) {
+    --order: 5;
+    top: 20%;
+    left: 0;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+
 }
 
 /**********************/
@@ -281,6 +352,12 @@ header nav ul li:first-of-type {
 
 .checkin {
     min-height: 100vh;
+    font-weight: 300;
+}
+
+.checkin main {
+    min-height: calc(85vh);
+    position: relative;
 }
 
 .checkin nav ul {
@@ -302,22 +379,157 @@ header nav ul li:first-of-type {
 
 .checkin nav li svg path {
     fill: white;
+}
 
+.change_info {
+    margin-top: .5em;
+    color: white;
+    text-decoration: none;
+    border-bottom: white solid 1px;
+    display: inline-block;
+    margin-left: 1.5em;
+    position: relative;
+}
+
+.change_info::before {
+    position: absolute;
+    left: -1.5em;
+    top: calc(50% - .5em);
+    content: '';
+    width: 1em;
+    height: 1em;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url('/style/images/pencil.svg')
+}
+
+.checkin h1 {
+    font-weight: 400;
+    margin: .8em auto;
+}
+
+.checkin h1.header__no_margin {
+    margin-bottom: 0;
 }
 
 .checkin__next_button {
+    border-radius: 0;
     display: block;
     text-align: center;
-    margin: auto;
     padding: .5em 2em;
-    font-size: 1.7em;
+    font-size: 1.3em;
     background-color: var(--primary);
     color: black;
     font-weight: 800;
-    margin: 1rem 0em;
+    margin: 3rem auto;
+    box-shadow: none;
+}
+
+/* checkin progress bar */
+.checkin__progress_bar {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    width: 16em;
+    margin: auto;
+}
+
+.checkin__progress_bar ul {
+    position: relative;
+    padding: 0em;
+    border: none;
+    max-width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkin__progress_bar ul::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 3px;
+    background-color: #fff;
+    width: 100%;
+    z-index: -1;
 
 }
 
+.checkin__progress_bar ul li {
+    background-color: var(--secondary4);
+    border: 3px solid var(--primary);
+    width: 4em;
+    height: 4em;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+}
+
+.checkin__progress_bar ul li svg {
+    fill: white;
+    width: 2em;
+    height: 2em;
+}
+
+.checkin__progress_bar ul li svg path {
+    stroke-width: 2px;
+}
+
+.checkin__progress_bar ul li:nth-of-type(1) svg {
+    transform: translateX(.2em)
+}
+
+.checkin__progress_bar ul li:nth-of-type(2) svg {
+    transform: scale(1.2)
+}
+
+
+
+/* lijstje met gele stippen van te voren */
+.yellow_dot_list {
+    margin: 2em 0em 0em 1em;
+    font-size: 1.2em;
+}
+
+.yellow_dot_list li {
+    position: relative;
+}
+
+.yellow_dot_list li::before {
+    position: absolute;
+    content: '';
+    width: .5em;
+    height: .5em;
+    background-color: var(--primary);
+    border-radius: 50%;
+    left: -1.25em;
+    top: calc(50% - .25em);
+}
+
+.next_buttons_container {
+    display: block;
+    width: 10em;
+    margin: auto;
+}
+
+.next_buttons_container .checkin__next_button {
+    padding: .5em 1.2em;
+    margin-bottom: 0em;
+}
+
+.next_buttons_container a:last-of-type {
+    margin: .5em 0em;
+    border-bottom: 1px white solid;
+    display: block;
+    width: 4.2em;
+    margin-left: auto;
+    color: white;
+    text-align: right;
+}
+
+/* ****************** */
 /* CHECKIN INTRODUCTION */
 .checkin__introduction nav li:nth-of-type(1) {
     visibility: hidden;
@@ -330,7 +542,7 @@ header nav ul li:first-of-type {
     margin: .8em auto;
 }
 
-.checkin__introduction main {
+.checkin main {
     padding: 0em 2.5em;
 }
 
@@ -350,7 +562,6 @@ header nav ul li:first-of-type {
 
 .checkin__introduction_list li h2 {
     font-weight: 400;
-    /* letter-spacing: .03em; */
     margin-bottom: .3em;
 }
 
@@ -409,6 +620,128 @@ header nav ul li:first-of-type {
     top: 0;
     left: 2.5rem;
 }
+
+/* ************ */
+/* Check info */
+.checkin__check_info main .info_list {
+    padding: 1em 0em;
+    border-bottom: solid 1px var(--primary);
+    max-width: 10em;
+}
+
+/* check info 2 */
+
+.checkin__check_info2 main .info_list {
+    max-width: 10em;
+}
+
+.checkin__check_info2 main ul li:nth-of-type(2) {
+    padding-bottom: .5em;
+    border-bottom: solid 1px var(--primary);
+}
+
+.checkin__check_info2 main ul li:nth-of-type(3) {
+    margin-top: .5em;
+}
+
+
+/* CHECKIN VERIFICATION INFO */
+.checkin__verification_info p {
+    font-size: 1.2em;
+    width: 17em;
+}
+
+/* check driver information */
+.checkin__driver_info h2 {
+    font-size: 1.3em;
+    font-weight: 300;
+    margin: 1em 0em 0em 0em;
+}
+
+.checkin__driver_info h1 {
+    margin: 0em 0em .8em 0em;
+}
+
+/* person verification info */
+.checkin__person_verification_photo .checkin__progress_bar {
+    position: static;
+    margin: 2em auto;
+    transform: unset;
+}
+
+.checkin__person_verification p {
+    font-size: 1.2em;
+}
+
+/* person verification */
+.checkin__person_verification_photo .person_image {
+    height: 60vh;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* person verification */
+.person_photo_container {
+    position: relative;
+}
+
+.checkin__person_verification_photo .picture_button {
+    position: absolute;
+    bottom: -1em;
+    left: calc(50% - 1em);
+    display: block;
+    height: 2em;
+    width: 2em;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    margin: 0;
+}
+
+.checkin__person_verification_photo .picture_button svg {
+    fill: white;
+    display: grid;
+    place-items: center;
+    height: 2em;
+    width: 2em;
+}
+
+/* document verification page */
+.checkin__document_verification h1 {
+    text-align: center;
+}
+
+.checkin__document_verification .verify_document_form {
+    height: 50vh;
+    display: grid;
+    place-items: center;
+}
+
+.checkin__document_verification .checkin__step_complete svg {
+    fill: white;
+}
+
+.checkin__document_verification .checkin__step_complete strong {
+    display: inline-block;
+    margin-top: .5em;
+    font-size: 1.3em;
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* hide loader at default */
+.checkin__document_verification .loader {
+    display: none;
+}
+
+.checkin__document_verification .disabled {
+    opacity: .4;
+    pointer-events: none;
+    cursor: pointer;
+    filter: brightness(.5);
+}
+
+
 
 /**********************/
 /****** PROFILE ******/

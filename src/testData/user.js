@@ -10,6 +10,12 @@ const users = [
         birthDate: '06-01-2000',
         email: 'test',
         password: 'password',
+        adress: {
+            city: 'Heiloo',
+            street: 'Westerweg 311',
+            zip: '1922 PS',
+            country: 'Nederland'
+        },
         reservations: [
             {
                 id: '090909',
@@ -23,8 +29,15 @@ const users = [
                 //checkinstatus
                 drivers: [
                     {
-                        name: 'Sam',
-                        validated: false
+                        info: {
+                            name: 'Sam',
+                            phone: '0612425243',
+                            birthDate: '06-01-2000',
+                            email: 'sam.slotemaker@test.nl'
+                        },
+                        validated: false,
+                        doucmentValidated: false,
+                        personValidated: false
                     },
                 ],
                 depositPayed: false
@@ -40,7 +53,9 @@ const users = [
                 drivers: [
                     {
                         name: 'Sam',
-                        validated: false
+                        validated: false,
+                        doucmentValidated: false,
+                        personValidated: false
                     },
                 ],
                 depositPayed: false
@@ -52,6 +67,12 @@ const users = [
         birthDate: '06-01-2000',
         email: 'sam1',
         password: 'password',
+        adress: {
+            city: 'Heiloo',
+            street: 'Westerweg 311',
+            zip: '1922 PS',
+            country: 'Nederland'
+        },
         reservations: [
             {
                 id: '090911',
@@ -63,12 +84,26 @@ const users = [
                 checkedIn: false,
                 drivers: [
                     {
-                        name: 'Sam',
-                        validated: false
+                        info: {
+                            name: 'Sam',
+                            phone: '0612425243',
+                            birthDate: '06-01-2000',
+                            email: 'sam.slotemaker@test.nl'
+                        },
+                        validated: false,
+                        doucmentValidated: false,
+                        personValidated: false
                     },
                     {
-                        name: 'Martijn',
-                        validated: true
+                        info: {
+                            name: 'Martijn',
+                            phone: '0612425243',
+                            birthDate: '06-01-2000',
+                            email: 'martijn.tromp@test.nl'
+                        },
+                        validated: true,
+                        doucmentValidated: false,
+                        personValidated: false
                     }
                 ],
                 depositPayed: false
@@ -83,8 +118,15 @@ const users = [
                 checkedIn: false,
                 drivers: [
                     {
-                        name: 'Sam',
-                        validated: false
+                        info: {
+                            name: 'Sam',
+                            phone: '0612425243',
+                            birthDate: '06-01-2000',
+                            email: 'sam.slotemaker@test.nl'
+                        },
+                        validated: false,
+                        doucmentValidated: false,
+                        personValidated: false
                     },
                 ],
                 depositPayed: false

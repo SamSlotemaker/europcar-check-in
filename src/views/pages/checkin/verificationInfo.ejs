@@ -2,28 +2,28 @@
 <html lang="en">
 <%- include('../../partials/head.ejs') %>
 
-<body class="checkin checkin__verification">
-    <nav>
-        <ul>
-            <li><a href=""></a></li>
-            <li>Logo</li>
-            <li>
-                <a href=""></a>
-            </li>
-        </ul>
-    </nav>
+<body class="checkin checkin__verification_info">
+
+    <%- include('../../partials/checkin-navigation.ejs') %>
 
     <main>
-        <h1>Identiteit verificatie</h1>
-        <p>Alle bestuurders dienen een foto te maken van hun gezicht en hun rijbewijs te valideren. In de volgende
-            stappen heb je het volgende nodig:
-            <ul>
-                <li>Een camera</li>
-                <li>Een geldig rijbewijs</li>
-            </ul>
-        </p>
-        <a href="/cars/checkin/driverInfo?car=<%= car.id %>">Begrepen</a>
-        <a href="#">overslaan</a>
+        <section>
+            <h1 class="header__no_margin">Identiteit verificatie</h1>
+            <p>Alle bestuurders dienen een foto te maken van hun gezicht en hun rijbewijs te valideren. In de volgende
+                stappen heb je het volgende nodig:
+                <ul class="yellow_dot_list">
+                    <li>Een camera</li>
+                    <li>Een geldig rijbewijs</li>
+                </ul>
+            </p>
+
+            <div class="next_buttons_container">
+                <a class="checkin__next_button" href="/cars/checkin/driverInfo?car=<%= car.id %>">Begrepen</a>
+                <a href="#">Overslaan</a>
+            </div>
+        </section>
+        <%- include('../../partials/progress-bar.ejs') %>
+
     </main>
 
 </body>

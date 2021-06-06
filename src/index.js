@@ -6,8 +6,8 @@ import login from './routes/POST/login.js'
 import logout from './routes/POST/logout.js'
 import loginPage from './routes/GET/login.js'
 import { carOverviewPage, carDetailpage } from './routes/GET/car.js'
-import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, driverInfoPage, personVerificationPage, documentVerificationPage } from './routes/GET/checkin.js'
-import { checkInfo, checkInfo2 } from './routes/POST/checkin.js'
+import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, driverInfoPage, personVerificationInfoPage, personVerificationPage, documentVerificationPage, documentVerificationInfoPage } from './routes/GET/checkin.js'
+import { checkInfo, checkInfo2, verifyDocument, verifyPerson } from './routes/POST/checkin.js'
 import { findUser, checkLogin } from './modules/login.js'
 import stripe from 'stripe'
 
@@ -36,33 +36,26 @@ app.post('/logout', logout)
 
 //cars
 app.get('/cars', checkLogin, carOverviewPage)
+
+//all checkin routes
 app.get('/cars/checkin/', checkLogin, checkinPage)
 app.get('/cars/checkin/checkInfo', checkLogin, checkInfoPage)
 app.get('/cars/checkin/checkInfo2', checkLogin, checkInfo2Page)
 app.get('/cars/checkin/verificationInfo', checkLogin, verificationInfoPage)
 app.get('/cars/checkin/driverInfo', checkLogin, driverInfoPage)
+app.get('/cars/checkin/personVerificationInfo', checkLogin, personVerificationInfoPage)
 app.get('/cars/checkin/personVerification', checkLogin, personVerificationPage)
+app.get('/cars/checkin/documentVerificationInfo', checkLogin, documentVerificationInfoPage)
 app.get('/cars/checkin/documentVerification', checkLogin, documentVerificationPage)
-
 
 app.get('/cars/:car', checkLogin, carDetailpage)
 
-// app.post('/checkin/', checkLogin, checkin)
 app.post('/cars/checkin/checkInfo', checkInfo)
 app.post('/cars/checkin/checkInfo2', checkInfo2)
+app.post('/cars/checkin/verifyPerson', verifyPerson)
+app.post('/cars/checkin/verifyDocument', verifyDocument)
 
-app.post('/create-verification-session', checkLogin, async (req, res) => {
-    // Create the session.
-    const verificationSession = await stripe('sk_test_51IyGULCc6p6jwnGgzDPMHUIM5rHQQK553qhs5bkmXRGCBzOCdjobitcJYRli07E6uZldtzCGfvzpx2yI9rPVCRHS00bJNDQV5Z').identity.verificationSessions.create({
-        type: 'document',
-        metadata: {
-            user_id: req.session.email,
-        },
-    });
 
-    // Return only the client secret to the frontend.
-    const clientSecret = verificationSession.client_secret;
-})
 
 //profile
 app.get('/profile', checkLogin, (req, res) => {

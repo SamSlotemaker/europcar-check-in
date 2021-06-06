@@ -20,3 +20,22 @@ export function checkInfo2(req, res) {
     res.redirect(`/cars/checkin/verificationInfo?car=${car.id}`)
 }
 
+export function verifyPerson(req, res) {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+
+
+    car.drivers[0].personValidated = true;
+
+    res.redirect(`/cars/checkin/documentVerificationInfo?car=${car.id}`)
+}
+
+
+export function verifyDocument(req, res) {
+    let user = findUser(req.session.userID)
+    let car = findCar(user, req.query.car)
+    let driver = car.drivers[0]
+    car.drivers[0].doucmentValidated = true;
+
+    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: true })
+}
