@@ -24,7 +24,7 @@ export function verifyPerson(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
     driver.personValidated = true;
@@ -37,7 +37,7 @@ export function verifyDocument(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
     driver.documentValidated = true;

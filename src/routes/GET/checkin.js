@@ -77,7 +77,7 @@ export function driverInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
@@ -97,7 +97,7 @@ export function personVerificationInfoPage(req, res) {
     let car = findCar(user, req.query.car)
 
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
@@ -116,7 +116,7 @@ export function personVerificationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
@@ -135,7 +135,7 @@ export function documentVerificationInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
@@ -153,7 +153,7 @@ export function documentVerificationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
@@ -173,14 +173,25 @@ export function driverDonePage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driverNumber = req.query.driver
+    let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
+
+    let nextUrl;
+
+    //when drivernumber meets the length of the drivers, go to the deposit
+    if (driverNumber >= car.drivers.length) {
+        nextUrl = `/cars/checkin/deposit?car=${car.id}`
+    }
+    //otherwise, go to the next driver
+    else {
+        nextUrl = `/cars/checkin/driverInfo?car=090911&driver=${driverNumber + 1}`
+    }
 
     let backUrl = `/cars/checkin/documentVerification?car=${car.id}&driver=${driverNumber}`
 
     let status = { infoStatus: 'done', verifyStatus: 'done', paymentStatus: 'blanc' }
 
-    res.render('checkin/driverDone', { title: 'check-in', car, user, driver, driverNumber, backUrl, status })
+    res.render('checkin/driverDone', { title: 'check-in', car, user, driver, driverNumber, backUrl, nextUrl, status })
 }
 
 /**
@@ -209,12 +220,10 @@ export function confirmationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-
     let verifyStatus = (car.drivers[0].documentValidated == true && car.drivers[0].personValidated == true) ? 'done' : 'notDone';
     let paymentStatus = (car.depositPayed == true) ? 'done' : 'notDone';
 
     let status = { infoStatus: 'done', verifyStatus: verifyStatus, paymentStatus: paymentStatus }
-
 
     let backUrl = `/cars/checkin/deposit?car=${car.id}`
 
