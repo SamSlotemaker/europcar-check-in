@@ -19,3 +19,15 @@ export function calculateDay(date) {
     const month = monthNames[date.getMonth()]
     return date.getDate() + ' ' + month
 }
+
+
+/**
+ * returns day difference from current date to given date
+ * @param {object} date - JS date object - newDate()
+ */
+export function getDateDifference(date) {
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays
+}

@@ -59,12 +59,13 @@ export function verificationInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let driverNumber = 1;
+
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
     let backUrl = `/cars/checkin/checkInfo2?car=${car.id}`
 
-
-    res.render('checkin/verificationInfo', { title: 'check-in', car, user, backUrl, status })
+    res.render('checkin/verificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber })
 }
 
 /**
@@ -76,8 +77,8 @@ export function driverInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-    let driver = car.drivers[0]
-    let driverNumber = findDriverNumber(driver, car.drivers)
+    let driverNumber = req.query.driver
+    let driver = car.drivers[driverNumber - 1]
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
@@ -95,12 +96,15 @@ export function personVerificationInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+
+    let driverNumber = req.query.driver
+
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
-    let backUrl = `/cars/checkin/driverInfo?car=${car.id}`
+    let backUrl = `/cars/checkin/driverInfo?car=${car.id}&driver=${driverNumber}`
 
 
-    res.render('checkin/personVerificationInfo', { title: 'check-in', car, user, backUrl, status })
+    res.render('checkin/personVerificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber })
 }
 
 /**
@@ -111,13 +115,15 @@ export function personVerificationInfoPage(req, res) {
 export function personVerificationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
-    let driver = car.drivers[0]
+
+    let driverNumber = req.query.driver
+    let driver = car.drivers[driverNumber - 1]
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
-    let backUrl = `/cars/checkin/personVerificationInfo?car=${car.id}`
+    let backUrl = `/cars/checkin/personVerificationInfo?car=${car.id}&driver=${driverNumber}`
 
-    res.render('checkin/personVerification', { title: 'check-in', car, user, driver, backUrl, status })
+    res.render('checkin/personVerification', { title: 'check-in', car, user, driver, backUrl, status, driverNumber })
 }
 
 /**
@@ -129,11 +135,13 @@ export function documentVerificationInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let driverNumber = req.query.driver
+
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
-    let backUrl = `/cars/checkin/personVerification?car=${car.id}`
+    let backUrl = `/cars/checkin/personVerification?car=${car.id}&driver=${driverNumber}`
 
-    res.render('checkin/documentVerificationInfo', { title: 'check-in', car, user, backUrl, status })
+    res.render('checkin/documentVerificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber })
 }
 
 /**
@@ -144,14 +152,16 @@ export function documentVerificationInfoPage(req, res) {
 export function documentVerificationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
-    let driver = car.drivers[0]
+
+    let driverNumber = req.query.driver
+    let driver = car.drivers[driverNumber - 1]
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
-    let backUrl = `/cars/checkin/documentVerificationInfo?car=${car.id}`
+    let backUrl = `/cars/checkin/documentVerificationInfo?car=${car.id}&driver=${driverNumber}`
 
 
-    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: false, backUrl, status })
+    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: false, backUrl, status, driverNumber })
 }
 
 /**
@@ -162,10 +172,11 @@ export function documentVerificationPage(req, res) {
 export function driverDonePage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
-    let driver = car.drivers[0]
-    let driverNumber = findDriverNumber(driver, car.drivers)
 
-    let backUrl = `/cars/checkin/documentVerification?car=${car.id}`
+    let driverNumber = req.query.driver
+    let driver = car.drivers[driverNumber - 1]
+
+    let backUrl = `/cars/checkin/documentVerification?car=${car.id}&driver=${driverNumber}`
 
     let status = { infoStatus: 'done', verifyStatus: 'done', paymentStatus: 'blanc' }
 

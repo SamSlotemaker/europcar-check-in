@@ -1,7 +1,6 @@
 import { findUser } from '../../modules/login.js'
 import { findCar } from '../../modules/cars.js'
-import { calculateDay } from '../../modules/date.js'
-import { calculateTime } from '../../modules/date.js'
+import { calculateDay, getDateDifference, calculateTime } from '../../modules/date.js'
 import QRCode from 'qrcode';
 
 /**
@@ -11,9 +10,21 @@ import QRCode from 'qrcode';
  */
 export function carOverviewPage(req, res) {
     let user = findUser(req.session.userID)
+
     let reservations = user.reservations;
 
-    res.render('cars.ejs', { title: 'login', reservations })
+    let pickupTimes = reservations.map(car => {
+        return calculateDay(car.startRent) + ' ' + calculateTime(car.startRent)
+    })
+    let returnTimes = reservations.map(car => {
+        return calculateDay(car.endRent) + ' ' + calculateTime(car.endRent)
+    })
+
+    let dateDifferences = reservations.map(car => {
+        return getDateDifference(car.startRent)
+    })
+
+    res.render('cars.ejs', { title: 'login', reservations, user, pickupTimes, returnTimes, dateDifferences })
 }
 
 /**

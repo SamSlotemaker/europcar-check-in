@@ -8,15 +8,34 @@
 
     <h1>Reserveringen</h1>
     <ul class="reservations__cars">
-        <% reservations.forEach(car => { %>
+        <% reservations.forEach((car,index) => { %>
         <li>
-            <a href="/cars/<%= car.id %>">
-                <img src="<%= car.imgUrl %>" alt="">
-                <div>
-                    <h2><%= car.car %> <%= car.model %></h2>
-                </div>
-                <strong class="check-in__status">Status: <span><%= car.checkedIn %></span></strong>
-            </a>
+            <img src="<%= car.imgUrl %>" alt="">
+            <header>
+                <h2><%= car.car %> <%= car.model %></h2>
+                <ul class="detail__car_info">
+                    <li><%= pickupTimes[index] %> </li>
+                    <li><%= returnTimes[index] %></li>
+                </ul>
+
+                <% if(dateDifferences[index] < 8){ %>
+
+
+                <% if( car.checkedIn ){ %>
+                <a class="button fully_complete_button" href="/cars/<%= car.id %>">
+                    Toon QR-code
+                    <%- include('../partials/icons/complete.ejs') %>
+                </a>
+                <% } else { %>
+                <a class="button" href="/cars/<%= car.id %>">Checkin</a>
+                <% } %>
+
+                <% } else { %>
+
+                <p>Je kunt over <%= dateDifferences[index] - 7 %> dagen inchecken</p>
+                <% } %>
+
+            </header>
         </li>
         <% }) %>
     </ul>

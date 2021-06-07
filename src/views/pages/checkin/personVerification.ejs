@@ -24,7 +24,7 @@
 
 
             <div class="next_buttons_container">
-                <form action="/cars/checkin/verifyPerson?car=<%= car.id %>" method="POST">
+                <form action="/cars/checkin/verifyPerson?car=<%= car.id %>&driver=<%= driverNumber %>" method="POST">
                     <button id="uploadButton" class="checkin__next_button disabled">Upload</button>
                 </form>
                 <a href="/cars/checkin/documentVerificationInfo?car=<%= car.id %>">overslaan</a>

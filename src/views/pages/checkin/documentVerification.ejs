@@ -11,7 +11,8 @@
 
             <h1><%= driver.info.name %></h1>
 
-            <form class="verify_document_form" action="/cars/checkin/verifyDocument?car=<%= car.id %>" method="POST">
+            <form class="verify_document_form"
+                action="/cars/checkin/verifyDocument?car=<%= car.id %>&driver=<%= driverNumber %>" method="POST">
                 <% if (validated) { %>
                 <section class="checkin__step_complete">
                     <%- include('../../partials/icons/complete.ejs') %>
@@ -33,7 +34,8 @@
 
             <div class="next_buttons_container">
                 <% if (validated) { %>
-                <a class="checkin__next_button" href="/cars/checkin/driverDone?car=<%= car.id %>">Verder</a>
+                <a class="checkin__next_button"
+                    href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">Verder</a>
                 <% } else { %>
                 <a class="checkin__next_button disabled" href="">Verder</a>
                 <% } %>
