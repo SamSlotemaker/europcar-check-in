@@ -239,7 +239,7 @@ export function confirmationPage(req, res) {
 
     let skipped = checkSkipped(req.query.skipped)
 
-    let verifyStatus = (car.drivers[0].documentValidated == true && car.drivers[0].personValidated == true) ? 'done' : 'notDone';
+    let verifyStatus = checkAllDriversCompleted(car) ? 'done' : 'notDone';
     let paymentStatus = (car.depositPayed == true) ? 'done' : 'notDone';
 
     let status = { infoStatus: 'done', verifyStatus: verifyStatus, paymentStatus: paymentStatus }

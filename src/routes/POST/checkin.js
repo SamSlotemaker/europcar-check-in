@@ -65,8 +65,7 @@ export function complete(req, res) {
     let car = findCar(user, req.query.car)
     car.checkedIn = true;
 
-    console.log(car)
     car.allStepsComplete = checkCompleteCheckedIn(car)
-
+    console.log(car)
     res.redirect(`/cars/`)
 }
