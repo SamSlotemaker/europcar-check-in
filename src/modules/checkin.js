@@ -26,6 +26,6 @@ export function checkCompleteCheckedIn(car) {
 
 export function checkAllDriversCompleted(car) {
     return !car.drivers.map(driver => {
-        return [driver.documentValidated, driver.personValidated]
-    }).flat().includes(false)
+        return driver.documentValidated
+    }).includes(false)
 }

@@ -37,8 +37,7 @@ const users = [
                             email: 'sam.slotemaker@test.nl'
                         },
 
-                        documentValidated: false,
-                        personValidated: false
+                        documentValidated: false
                     },
                 ],
                 depositPayed: false
@@ -62,8 +61,7 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'sam.slotemaker@test.nl'
                         },
-                        documentValidated: false,
-                        personValidated: false
+                        documentValidated: false
                     },
                 ],
                 depositPayed: false
@@ -101,8 +99,7 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'sam.slotemaker@test.nl'
                         },
-                        documentValidated: false,
-                        personValidated: false
+                        documentValidated: false
                     },
                     {
                         info: {
@@ -111,8 +108,7 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'martijn.tromp@test.nl'
                         },
-                        documentValidated: false,
-                        personValidated: false
+                        documentValidated: false
                     }
                 ],
                 depositPayed: false
@@ -136,8 +132,7 @@ const users = [
                             birthDate: '06-01-2000',
                             email: 'sam.slotemaker@test.nl'
                         },
-                        documentValidated: false,
-                        personValidated: false
+                        documentValidated: false
                     },
                 ],
                 depositPayed: false

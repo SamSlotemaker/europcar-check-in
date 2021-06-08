@@ -6,10 +6,9 @@ import login from './routes/POST/login.js'
 import logout from './routes/POST/logout.js'
 import loginPage from './routes/GET/login.js'
 import { carOverviewPage, carDetailpage } from './routes/GET/car.js'
-import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, confirmationPage, driverInfoPage, depositPage, driverDonePage, personVerificationInfoPage, personVerificationPage, documentVerificationPage, documentVerificationInfoPage } from './routes/GET/checkin.js'
-import { startCheckin, checkInfo, checkInfo2, verifyDocument, verifyPerson, pay, complete } from './routes/POST/checkin.js'
+import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, confirmationPage, callbackValidation, driverInfoPage, depositPage, driverDonePage, documentVerificationPage } from './routes/GET/checkin.js'
+import { startCheckin, checkInfo, checkInfo2, verifyDocument, pay, complete } from './routes/POST/checkin.js'
 import { findUser, checkLogin } from './modules/login.js'
-import stripe from 'stripe'
 
 
 const app = express()
@@ -45,10 +44,9 @@ app.get('/cars/checkin/checkInfo2', checkLogin, checkInfo2Page)
 //verification pages
 app.get('/cars/checkin/verificationInfo', checkLogin, verificationInfoPage)
 app.get('/cars/checkin/driverInfo', checkLogin, driverInfoPage)
-app.get('/cars/checkin/personVerificationInfo', checkLogin, personVerificationInfoPage)
-app.get('/cars/checkin/personVerification', checkLogin, personVerificationPage)
-app.get('/cars/checkin/documentVerificationInfo', checkLogin, documentVerificationInfoPage)
 app.get('/cars/checkin/documentVerification', checkLogin, documentVerificationPage)
+
+app.get('/cars/checkin/callbackValidation', checkLogin, callbackValidation)
 //driver completed page
 app.get('/cars/checkin/driverDone', checkLogin, driverDonePage)
 //deposit page
@@ -62,7 +60,6 @@ app.get('/cars/:car', checkLogin, carDetailpage)
 app.post('/cars/checkin/start', startCheckin)
 app.post('/cars/checkin/checkInfo', checkInfo)
 app.post('/cars/checkin/checkInfo2', checkInfo2)
-app.post('/cars/checkin/verifyPerson', verifyPerson)
 app.post('/cars/checkin/verifyDocument', verifyDocument)
 app.post('/cars/checkin/pay', pay)
 app.post('/cars/checkin/complete', complete)

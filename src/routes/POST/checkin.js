@@ -37,36 +37,19 @@ export function checkInfo2(req, res) {
     res.redirect(`/cars/checkin/verificationInfo?car=${car.id}`)
 }
 
-export function verifyPerson(req, res) {
-    let user = findUser(req.session.userID)
-    let car = findCar(user, req.query.car)
-
-    let driverNumber = Number(req.query.driver)
-    let driver = car.drivers[driverNumber - 1]
-
-    driver.personValidated = true;
-
-    res.redirect(`/cars/checkin/documentVerificationInfo?car=${car.id}&driver=${driverNumber}`)
-}
 
 
 export function verifyDocument(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
-
     let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
-    let skipped = checkSkipped(req.query.skipped)
-
     driver.documentValidated = true;
 
-    let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
+    res.redirect(`/cars/checkin/driverDone?car=${car.id}&driver=${driverNumber}`)
 
-    let backUrl = `/cars/checkin/documentVerificationInfo?car=${car.id}&driver=${driverNumber}`
-
-    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: true, backUrl, status, driverNumber, skipped })
 }
 
 export function pay(req, res) {
@@ -82,7 +65,7 @@ export function complete(req, res) {
     let car = findCar(user, req.query.car)
     car.checkedIn = true;
 
-    console.log(checkCompleteCheckedIn(car))
+    console.log(car)
     car.allStepsComplete = checkCompleteCheckedIn(car)
 
     res.redirect(`/cars/`)

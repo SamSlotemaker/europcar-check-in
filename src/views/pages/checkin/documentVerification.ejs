@@ -11,23 +11,13 @@
 
             <h1><%= driver.info.name %></h1>
 
-            <form class="verify_document_form"
-                action="/cars/checkin/verifyDocument?car=<%= car.id %>&driver=<%= driverNumber %>" method="POST">
+            <section class="verify_document_form">
                 <% if (validated) { %>
                 <section class="checkin__step_complete">
                     <%- include('../../partials/icons/complete.ejs') %>
                     <strong>Rijbewijs ontvangen</strong>
                 </section>
                 <% } else { %>
-                <div class="loader">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <!-- <button id="verify-button">Verifieer rijbewijs</button> -->
                 <section>
                     <div id='veriff-root'></div>
                     <p class="veriff-message">Je wordt doorgestuurd naar Veriff, een externe partij die de verificatie
@@ -37,18 +27,17 @@
 
                 <% } %>
 
-            </form>
+            </section>
 
             <div class="next_buttons_container">
-                <!-- <% if (validated) { %>
-                <a class="checkin__next_button"
-                    href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">Verder</a>
-                <% } else { %>
-                <a class="checkin__next_button disabled" href="">Verder</a>
-                <% } %> -->
-                <a class="checkin__next_button"
-                    href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">Verder</a>
+                <% if (validated) { %>
+                <form action="/cars/checkin/verifyDocument?car=<%= car.id %>&driver=<%= driverNumber %>" method="POST">
+                    <button class="checkin__next_button">Verder</button>
+
+                </form>
+                <% } %>
                 <a href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">overslaan</a>
+
             </div>
         </section>
         <%- include('../../partials/progress-bar.ejs') %>

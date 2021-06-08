@@ -14,7 +14,6 @@ export function carOverviewPage(req, res) {
     let reservations = user.reservations;
 
     let pickupTimes = reservations.map(car => {
-        console.log(car)
         return calculateDay(car.startRent) + ' ' + calculateTime(car.startRent)
     })
     let returnTimes = reservations.map(car => {
