@@ -65,6 +65,34 @@ a.button {
     cursor: pointer;
 }
 
+input#veriff-submit-btn {
+    letter-spacing: .07em;
+    display: block;
+    padding: .5em 1em;
+    margin: 1em auto;
+    font-size: 1.3em;
+    background-color: var(--primary);
+    border-radius: .3em;
+    border: none;
+    font-weight: 800;
+    color: black;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.562);
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    text-transform: none;
+}
+
+p.veriff-description {
+    display: none;
+}
+
+.veriff-message {
+    max-width: 20em;
+}
+
+
+
 body:not(.checkin)>header {
     padding: 1.5em;
     background-color: var(--secondary1);
@@ -868,6 +896,8 @@ a.fully_complete_button {
     display: grid;
     place-items: center;
 }
+
+.input.verif-submit {}
 
 .checkin__document_verification .checkin__step_complete svg {
     fill: white;

@@ -28,19 +28,26 @@
                     <span></span>
                 </div>
                 <!-- <button id="verify-button">Verifieer rijbewijs</button> -->
-                <div id='veriff-root'></div>
+                <section>
+                    <div id='veriff-root'></div>
+                    <p class="veriff-message">Je wordt doorgestuurd naar Veriff, een externe partij die de verificatie
+                        van het rijbewijs
+                        afhandelt.</p>
+                </section>
 
                 <% } %>
 
             </form>
 
             <div class="next_buttons_container">
-                <% if (validated) { %>
+                <!-- <% if (validated) { %>
                 <a class="checkin__next_button"
                     href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">Verder</a>
                 <% } else { %>
                 <a class="checkin__next_button disabled" href="">Verder</a>
-                <% } %>
+                <% } %> -->
+                <a class="checkin__next_button"
+                    href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">Verder</a>
                 <a href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">overslaan</a>
             </div>
         </section>
