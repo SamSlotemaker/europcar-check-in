@@ -21,12 +21,13 @@ const users = [
                 id: '090909',
                 car: 'Ford',
                 model: 'Ka',
-                //klasse voor leeftijdsgrens
                 startRent: new Date('Juli 1, 2021 13:30:00'),
                 endRent: new Date('Juli 9, 2021 16:00:00'),
                 imgUrl: '/style/images/fordKa.jpg',
+                allStepsComplete: false,
+                checkinStarted: false,
                 checkedIn: false,
-                //checkinstatus
+                infoConfirmed: false,
                 drivers: [
                     {
                         info: {
@@ -49,7 +50,10 @@ const users = [
                 startRent: new Date('Juli 3, 2021 13:30:00'),
                 endRent: new Date('Juli 7, 2021 16:00:00'),
                 imgUrl: '/style/images/punto.jpg',
+                allStepsComplete: false,
+                checkinStarted: false,
                 checkedIn: false,
+                infoConfirmed: false,
                 drivers: [
                     {
                         info: {
@@ -85,7 +89,10 @@ const users = [
                 startRent: new Date('June 10, 2021 13:30:00'),
                 endRent: new Date('June 17, 2021 16:00:00'),
                 imgUrl: '/style/images/5serie.jpg',
+                allStepsComplete: false,
+                checkinStarted: false,
                 checkedIn: false,
+                infoConfirmed: false,
                 drivers: [
                     {
                         info: {
@@ -117,7 +124,10 @@ const users = [
                 startRent: new Date('Juli 12, 2021 13:30:00'),
                 endRent: new Date('Juli 20, 2021 16:00:00'),
                 imgUrl: '/style/images/a3.jpg',
+                allStepsComplete: false,
+                checkinStarted: false,
                 checkedIn: false,
+                infoConfirmed: false,
                 drivers: [
                     {
                         info: {

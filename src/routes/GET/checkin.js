@@ -2,6 +2,7 @@ import { findUser } from '../../modules/login.js'
 import { findCar, findDriverNumber } from '../../modules/cars.js'
 import { calculateDay } from '../../modules/date.js'
 import { calculateTime } from '../../modules/date.js'
+import { checkSkipped, checkAllDriversCompleted } from '../../modules/checkin.js'
 
 
 /**
@@ -13,9 +14,11 @@ export function checkinPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
+
     let backUrl = '#'
 
-    res.render('checkin/introduction', { title: 'check-in', car, user, backUrl })
+    res.render('checkin/introduction', { title: 'check-in', car, user, backUrl, skipped })
 }
 
 /**
@@ -27,13 +30,20 @@ export function checkInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
+
+    // redirect if info has already been confirmed
+    if (car.infoConfirmed) {
+        res.redirect(`/cars/checkin/verificationInfo?car=${car.id}&skipped=true`)
+    }
+
     let pickupTime = calculateDay(car.startRent) + ' ' + calculateTime(car.startRent)
     let returnTime = calculateDay(car.endRent) + ' ' + calculateTime(car.endRent)
     let status = { infoStatus: 'doing', verifyStatus: 'blanc', paymentStatus: 'blanc' }
 
     let backUrl = `/cars/checkin/?car=${car.id}`
 
-    res.render('checkin/checkInfo', { title: 'check-in', car, user, pickupTime, returnTime, backUrl, status })
+    res.render('checkin/checkInfo', { title: 'check-in', car, user, pickupTime, returnTime, backUrl, status, skipped })
 }
 
 /**
@@ -44,10 +54,12 @@ export function checkInfoPage(req, res) {
 export function checkInfo2Page(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
+    let skipped = checkSkipped(req.query.skipped)
+
     let status = { infoStatus: 'doing', verifyStatus: 'blanc', paymentStatus: 'blanc' }
     let backUrl = `/cars/checkin/checkInfo?car=${car.id}`
 
-    res.render('checkin/checkInfo2', { title: 'check-in', car, user, backUrl, status })
+    res.render('checkin/checkInfo2', { title: 'check-in', car, user, backUrl, status, skipped })
 }
 
 /**
@@ -61,11 +73,23 @@ export function verificationInfoPage(req, res) {
 
     let driverNumber = 1;
 
+    // check if page was skipped to
+    let skipped = checkSkipped(req.query.skipped)
+
+    //create an array with all verification statuses
+    let driverCompleteStatuses = checkAllDriversCompleted(car)
+
+    //skip full identification routes when it's already been completed
+    if (driverCompleteStatuses) {
+        res.redirect(`/cars/checkin/deposit?car=${car.id}`)
+    }
+
+
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
     let backUrl = `/cars/checkin/checkInfo2?car=${car.id}`
 
-    res.render('checkin/verificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber })
+    res.render('checkin/verificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber, skipped })
 }
 
 /**
@@ -77,6 +101,8 @@ export function driverInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
+
     let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
@@ -84,7 +110,7 @@ export function driverInfoPage(req, res) {
 
     let backUrl = `/cars/checkin/verificationInfo?car=${car.id}`
 
-    res.render('checkin/driverInfo', { title: 'check-in', car, user, driver, driverNumber, backUrl, status })
+    res.render('checkin/driverInfo', { title: 'check-in', car, user, driver, driverNumber, backUrl, status, skipped })
 }
 
 /**
@@ -96,6 +122,7 @@ export function personVerificationInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
 
     let driverNumber = Number(req.query.driver)
 
@@ -104,7 +131,7 @@ export function personVerificationInfoPage(req, res) {
     let backUrl = `/cars/checkin/driverInfo?car=${car.id}&driver=${driverNumber}`
 
 
-    res.render('checkin/personVerificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber })
+    res.render('checkin/personVerificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber, skipped })
 }
 
 /**
@@ -115,6 +142,7 @@ export function personVerificationInfoPage(req, res) {
 export function personVerificationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
+    let skipped = checkSkipped(req.query.skipped)
 
     let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
@@ -123,7 +151,7 @@ export function personVerificationPage(req, res) {
 
     let backUrl = `/cars/checkin/personVerificationInfo?car=${car.id}&driver=${driverNumber}`
 
-    res.render('checkin/personVerification', { title: 'check-in', car, user, driver, backUrl, status, driverNumber })
+    res.render('checkin/personVerification', { title: 'check-in', car, user, driver, backUrl, status, driverNumber, skipped })
 }
 
 /**
@@ -135,13 +163,15 @@ export function documentVerificationInfoPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
+
     let driverNumber = Number(req.query.driver)
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
     let backUrl = `/cars/checkin/personVerification?car=${car.id}&driver=${driverNumber}`
 
-    res.render('checkin/documentVerificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber })
+    res.render('checkin/documentVerificationInfo', { title: 'check-in', car, user, backUrl, status, driverNumber, skipped })
 }
 
 /**
@@ -153,6 +183,8 @@ export function documentVerificationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
+
     let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
 
@@ -161,7 +193,7 @@ export function documentVerificationPage(req, res) {
     let backUrl = `/cars/checkin/documentVerificationInfo?car=${car.id}&driver=${driverNumber}`
 
 
-    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: false, backUrl, status, driverNumber })
+    res.render('checkin/documentVerification', { title: 'check-in', car, user, driver, validated: false, backUrl, status, driverNumber, skipped })
 }
 
 /**
@@ -172,6 +204,8 @@ export function documentVerificationPage(req, res) {
 export function driverDonePage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
+
+    let skipped = checkSkipped(req.query.skipped)
 
     let driverNumber = Number(req.query.driver)
     let driver = car.drivers[driverNumber - 1]
@@ -191,7 +225,7 @@ export function driverDonePage(req, res) {
 
     let status = { infoStatus: 'done', verifyStatus: 'done', paymentStatus: 'blanc' }
 
-    res.render('checkin/driverDone', { title: 'check-in', car, user, driver, driverNumber, backUrl, nextUrl, status })
+    res.render('checkin/driverDone', { title: 'check-in', car, user, driver, driverNumber, backUrl, nextUrl, status, skipped })
 }
 
 /**
@@ -203,12 +237,19 @@ export function depositPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
+
+    // redirect if deposit has been payed
+    if (car.depositPayed) {
+        res.redirect(`/cars/checkin/confirm?car=${car.id}`)
+    }
+
     let status = { infoStatus: 'done', verifyStatus: 'done', paymentStatus: 'doing' }
 
     let backUrl = `/cars/checkin/driverDone?car=${car.id}`
 
 
-    res.render('checkin/deposit', { title: 'check-in', car, user, backUrl, status })
+    res.render('checkin/deposit', { title: 'check-in', car, user, backUrl, status, skipped })
 }
 
 /**
@@ -220,6 +261,8 @@ export function confirmationPage(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
 
+    let skipped = checkSkipped(req.query.skipped)
+
     let verifyStatus = (car.drivers[0].documentValidated == true && car.drivers[0].personValidated == true) ? 'done' : 'notDone';
     let paymentStatus = (car.depositPayed == true) ? 'done' : 'notDone';
 
@@ -227,7 +270,7 @@ export function confirmationPage(req, res) {
 
     let backUrl = `/cars/checkin/deposit?car=${car.id}`
 
-    res.render('checkin/incheckConfirmation', { title: 'check-in', car, user, backUrl, status })
+    res.render('checkin/incheckConfirmation', { title: 'check-in', car, user, backUrl, status, skipped })
 
 }
 

@@ -27,7 +27,9 @@
                     <span></span>
                     <span></span>
                 </div>
-                <button id="verify-button">Verifieer rijbewijs</button>
+                <!-- <button id="verify-button">Verifieer rijbewijs</button> -->
+                <div id='veriff-root'></div>
+
                 <% } %>
 
             </form>
@@ -39,11 +41,14 @@
                 <% } else { %>
                 <a class="checkin__next_button disabled" href="">Verder</a>
                 <% } %>
-                <a href="/cars/checkin/driverDone?car=<%= car.id %>">overslaan</a>
+                <a href="/cars/checkin/driverDone?car=<%= car.id %>&driver=<%= driverNumber %>">overslaan</a>
             </div>
         </section>
         <%- include('../../partials/progress-bar.ejs') %>
     </main>
+    <script src='https://cdn.veriff.me/sdk/js/1.1/veriff.min.js'></script>
+    <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
+    <script src="/script/verification.js"></script>
 </body>
 
 </html>

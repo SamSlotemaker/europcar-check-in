@@ -65,7 +65,7 @@ a.button {
     cursor: pointer;
 }
 
-body>header {
+body:not(.checkin)>header {
     padding: 1.5em;
     background-color: var(--secondary1);
     display: flex;
@@ -73,26 +73,26 @@ body>header {
     justify-content: space-between;
 }
 
-body>header nav ul {
+body:not(.checkin)>header nav ul {
     display: flex;
 }
 
-body>header img {
+body:not(.checkin)>header img {
     height: 2em
 }
 
-body>header nav ul li {
+body:not(.checkin)>header nav ul li {
     font-weight: 600;
     margin-left: 1em;
 }
 
-body>header nav ul li a {
+body:not(.checkin)>header nav ul li a {
     position: relative;
     letter-spacing: .05em;
     color: white;
 }
 
-body>header nav ul li a::after {
+body:not(.checkin)>header nav ul li a::after {
     display: none;
     content: '';
     width: 1.1em;
@@ -104,11 +104,11 @@ body>header nav ul li a::after {
     top: 130%;
 }
 
-body>header nav ul li a:hover::after {
+body:not(.checkin)>header nav ul li a:hover::after {
     display: block;
 }
 
-body>header nav ul li:first-of-type {
+body:not(.checkin)>header nav ul li:first-of-type {
     margin-left: auto;
 }
 
@@ -403,7 +403,37 @@ a.fully_complete_button {
 .checkin {
     min-height: 100vh;
     font-weight: 300;
+    overflow-x: hidden;
 }
+
+
+.skipped_message {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    padding: 1em;
+    background-color: var(--primary);
+    color: black;
+    z-index: 10;
+    font-weight: 500;
+    pointer-events: none;
+    transform: translateX(0%);
+    border-radius: 1em;
+    animation: skippedMessage .4s 2s linear forwards;
+}
+
+@keyframes skippedMessage {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
 
 .checkin main {
     min-height: calc(85vh);
@@ -797,6 +827,11 @@ a.fully_complete_button {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+
+.person_photo_container canvas {
+    z-index: -1;
+    background-color: #000;
 }
 
 /* video */

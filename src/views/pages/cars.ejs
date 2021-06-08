@@ -22,12 +22,24 @@
 
 
                 <% if( car.checkedIn ){ %>
+
+                <% if( !car.allStepsComplete ){ %>
+                <p>Er zijn onafgeronde stappen</p>
+                <a class="button" href="/cars/checkin?car=<%= car.id %>">Afronden</a>
+                <% } %>
+
                 <a class="button fully_complete_button" href="/cars/<%= car.id %>">
                     Toon QR-code
                     <%- include('../partials/icons/complete.ejs') %>
                 </a>
                 <% } else { %>
+
+                <% if( !car.checkinStarted ){ %>
                 <a class="button" href="/cars/<%= car.id %>">Checkin</a>
+                <% }else{ %>
+                <a class="button" href="/cars/checkin?car=<%= car.id %>">Checkin voortzetten</a>
+                <% } %>
+
                 <% } %>
 
                 <% } else { %>

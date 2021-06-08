@@ -7,7 +7,7 @@ import logout from './routes/POST/logout.js'
 import loginPage from './routes/GET/login.js'
 import { carOverviewPage, carDetailpage } from './routes/GET/car.js'
 import { checkinPage, checkInfoPage, checkInfo2Page, verificationInfoPage, confirmationPage, driverInfoPage, depositPage, driverDonePage, personVerificationInfoPage, personVerificationPage, documentVerificationPage, documentVerificationInfoPage } from './routes/GET/checkin.js'
-import { checkInfo, checkInfo2, verifyDocument, verifyPerson, pay, complete } from './routes/POST/checkin.js'
+import { startCheckin, checkInfo, checkInfo2, verifyDocument, verifyPerson, pay, complete } from './routes/POST/checkin.js'
 import { findUser, checkLogin } from './modules/login.js'
 import stripe from 'stripe'
 
@@ -59,6 +59,7 @@ app.get('/cars/checkin/confirm', checkLogin, confirmationPage)
 app.get('/cars/:car', checkLogin, carDetailpage)
 
 //POST routes
+app.post('/cars/checkin/start', startCheckin)
 app.post('/cars/checkin/checkInfo', checkInfo)
 app.post('/cars/checkin/checkInfo2', checkInfo2)
 app.post('/cars/checkin/verifyPerson', verifyPerson)

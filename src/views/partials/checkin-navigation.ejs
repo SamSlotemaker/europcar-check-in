@@ -1,13 +1,18 @@
-<nav>
-    <ul>
-        <li><a href="<%= backUrl %>">
-                <%- include('./icons/back.ejs') %>
-            </a></li>
-        <li><img src="/style/images/europcar_logo.png" alt=""></li>
-        <li>
-            <a href="/cars/<%= car.id %>">
-                <%- include('./icons/close.ejs') %>
-            </a>
-        </li>
-    </ul>
-</nav>
+<header>
+    <% if(skipped){ %>
+    <p class="skipped_message">Voltooide velden overgeslagen.</p>
+    <% } %>
+    <nav>
+        <ul>
+            <li><a href="<%= backUrl %>">
+                    <%- include('./icons/back.ejs') %>
+                </a></li>
+            <li><img src="/style/images/europcar_logo.png" alt=""></li>
+            <li>
+                <a href="/cars/<%= car.id %>">
+                    <%- include('./icons/close.ejs') %>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

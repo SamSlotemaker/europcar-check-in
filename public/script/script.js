@@ -46,7 +46,8 @@ if (canvas) {
         let width = video.offsetWidth
         let height = video.offsetHeight
         context.drawImage(video, 0, 0, width, height)
-        canvas.style.opacity = 1;
+        canvas.style.opacity = 1
+        canvas.style.zIndex = 0
         uploadButton.classList.remove('disabled')
     });
 

@@ -1,1 +1,16 @@
-var stripe = Stripe('pk_test_51IyGULCc6p6jwnGglYOZlF2GtC5hrxnQsuHwLcfBC1dhyFh5g2lmYFTHZ7CCMRUtmo1RIU0u9Tm7JSw2frwnJmuL00lbe1GLS1');
+const veriff = Veriff({
+    host: 'https://stationapi.veriff.com',
+    apiKey: '02dfbf41-b5c9-4411-8e17-5d44332046a8',
+    parentId: 'veriff-root',
+    onSession: function (err, response) {
+        window.veriffSDK.createVeriffFrame({ url: response.verification.url });
+    }
+});
+veriff.setParams({
+    person: {
+        givenName: ' ',
+        lastName: ' '
+    },
+    vendorData: ' '
+});
+veriff.mount();
