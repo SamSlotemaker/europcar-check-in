@@ -33,7 +33,7 @@ app.get('/', loginPage)
 app.post('/login', login)
 app.post('/logout', logout)
 
-//cars
+//cars overview page
 app.get('/cars', checkLogin, carOverviewPage)
 
 //all checkin routes

@@ -42,8 +42,26 @@
 
             <% if(checkedIn) { %>
             <p>Scan de QR code tijdens het ophalen van de auto om het incheck proces af te ronden</p>
-            <img src=" <%= qr %>" alt="" class="qr_code">
-                <% } %>
+
+            <section class=" qr_code_card">
+                <header>
+                    <h2><%= car.car %> <%= car.model %></h2>
+                    <ul></ul>
+
+                    <ul class="detail__car_info">
+                        <li><%= pickupTime %> </li>
+                        <li><%= returnTime %></li>
+                    </ul>
+                </header>
+                <img src=" <%= qr %>" alt="" class="qr_code">
+                <!-- <button type="button" class="save_qr_image">Save image</button> -->
+                <a class="button" href="<%= qr %>" download>Sla
+                    op
+                    als
+                    foto</a>
+        </section>
+
+        <% } %>
         </section>
     </main>
 </body>

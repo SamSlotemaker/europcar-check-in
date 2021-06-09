@@ -82,3 +82,20 @@ depositInputs.forEach(input => {
         }
     })
 })
+
+
+// SAVE QR CODE IMAGE
+const saveQRbutton = document.querySelector('.save_qr_image')
+const url = 'https://hcti.io/v1/image/6a1328ad-d665-4f03-b73a-2c8667d79227'
+if (saveQRbutton) {
+    saveQRbutton.addEventListener('click', () => {
+        saveImage(url)
+    })
+}
+
+function saveImage(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = url;
+    // a.click()
+}
