@@ -2,6 +2,12 @@ const cssLoader = document.querySelector('.loader')
 const documentVerificationForm = document.querySelector('.verify_document_form')
 const documentVerificationFormButton = document.querySelector('.verify_document_form button')
 const documentVerificationComplete = document.querySelector('.checkin__step_complete')
+const noJsMessages = document.querySelectorAll('.no-javascript')
+
+//hide all messagees saying you need Javascript
+noJsMessages.forEach(message => {
+    message.style.display = 'none'
+})
 
 function handleDocumentFormSubmit(e) {
     e.preventDefault()

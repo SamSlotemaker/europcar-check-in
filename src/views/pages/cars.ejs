@@ -18,9 +18,7 @@
                     <li><%= returnTimes[index] %></li>
                 </ul>
 
-                <% if(dateDifferences[index] < 8){ %>
-
-
+                <% if(dateDifferences[index] > -8 && dateDifferences[index] <= 0 ){ %>
                 <% if( car.checkedIn ){ %>
 
                 <% if( !car.allStepsComplete ){ %>
@@ -41,10 +39,10 @@
                 <% } %>
 
                 <% } %>
-
+                <% } else if(dateDifferences[index] > 0) { %>
+                <p>Incheckperiode verlopen, check in op locatie.</p>
                 <% } else { %>
-
-                <p>Je kunt over <%= dateDifferences[index] - 7 %> dagen inchecken</p>
+                <p>Je kunt over <%= dateDifferences[index]*-1 - 7 %> dagen inchecken</p>
                 <% } %>
 
             </header>

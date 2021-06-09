@@ -27,7 +27,8 @@ export function calculateDay(date) {
  */
 export function getDateDifference(date) {
     const now = new Date();
-    const diffTime = Math.abs(now - date);
+    const diffTime = Math.abs(now) - Math.abs(date);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return diffDays
+    console.log(diffDays - 1)
+    return (diffDays - 1)
 }
