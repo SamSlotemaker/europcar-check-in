@@ -183,7 +183,16 @@ export function driverDonePage(req, res) {
 
     let skipped = checkSkipped(req.query.skipped)
 
+    //fetch drivernumer when there is no query (coming from back button)
     let driverNumber = Number(req.query.driver)
+    if (!driverNumber) {
+        car.drivers.forEach((driver, index) => {
+            //set drivernumber to index of the last not validated driver
+            if (!driver.documentValidated) {
+                driverNumber = index + 1;
+            }
+        })
+    }
     let driver = car.drivers[driverNumber - 1]
 
     let nextUrl;
