@@ -81,7 +81,7 @@ export function verificationInfoPage(req, res) {
 
     //skip full identification routes when it's already been completed
     if (driverCompleteStatuses) {
-        res.redirect(`/cars/checkin/deposit?car=${car.id}`)
+        res.redirect(`/cars/checkin/deposit?car=${car.id}&skipped=true`)
     }
 
     let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
@@ -136,7 +136,6 @@ export function documentVerificationPage(req, res) {
 
     req.session.car = req.query.car
     req.session.driver = req.query.driver
-    console.log(req.session.carCheckin)
     let skipped = checkSkipped(req.query.skipped)
 
     let driverNumber = Number(req.query.driver)
@@ -233,8 +232,7 @@ export function depositPage(req, res) {
 
     let backUrl = `/cars/checkin/driverDone?car=${car.id}`
 
-
-    res.render('checkin/deposit', { title: 'check-in', car, user, backUrl, status, skipped })
+    res.render('checkin/deposit', { title: 'check-in', car, user, backUrl, status, skipped, payed: car.depositPayed, open: null })
 }
 
 /**

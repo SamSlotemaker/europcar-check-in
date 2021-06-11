@@ -10,7 +10,14 @@
         <section>
 
             <h1>Borg betalen</h1>
-            <section id="payment_form" action="">
+            <section>
+                <ul class="info_list">
+                    <li>Borg <span>€400,-</span></li>
+                    <li>Verzekering <span>€49,-</span></li>
+                    <li>Totaal <span>€449,-</span></li>
+                </ul>
+            </section>
+            <section id="payment_form" class="<%= open %>">
                 <section>
                     <h2>Kies een betaalmethode</h2>
                     <input type="radio" name="payment" id="ideal" value="ideal">
@@ -20,20 +27,59 @@
                     <input type="radio" name="payment" id="creditcard" value="creditcard">
                     <label for="creditcard"><img src="/style/images/credit-card-logos.png" alt=""></label>
                 </section>
-                <form class="fieldset_ideal">
-                    <label for="">Ideal</label>
-                    <input type="text">
+                <form class="fieldset_ideal" action="/cars/checkin/pay?car=<%= car.id %>" method="POST">
+                    <input type="hidden" name="method" value="ideal">
+                    <label for="">Kies je bank:</label>
+                    <select name="" id="">
+                        <option value="abn">ABN Amro</option>
+                        <option value="ing">ING</option>
+                        <option value="rabo">Rabobank</option>
+                        <option value="asn">ASN Bank</option>
+                        <option value="SNS">SNS Bank</option>
+
+                    </select>
+                    <% if(!payed){ %>
+                    <button type="submit"><span>Betalen</span>
+                        <%- include('../../partials/icons/loader.ejs') %>
+                    </button>
+                    <% } else{%>
+                    <button type="button" class="fully_complete_button">Betaald!
+                        <%- include('../../partials/icons/complete.ejs') %>
+                    </button>
+                    <% } %>
                 </form>
-                <form class="fieldset_creditcard">
-                    <label for="">Creditcard</label>
-                    <input type="text">
+                <form class="fieldset_creditcard" action="/cars/checkin/pay?car=<%= car.id %>" method="POST">
+                    <input type="hidden" name="method" value="creditcard" required>
+                    <label for="number">Creditcardnummer</label>
+                    <input type="text" id="number" required>
+                    <label for="cardname">Naam kaarthouder</label>
+                    <input type="text" id="cardname" required>
+                    <label for="expire">Vervaldatum</label>
+                    <input type="text" id="expire" class="expire" placeholder="DD/MM" required>
+                    <label for="securitycode">Veiligheidscode</label>
+                    <input type="text" id="securitycode" required>
+                    <!-- check if deposit is payed and show correct button -->
+                    <% if(!payed){ %>
+                    <button type="submit"><span>Betalen</span>
+                        <%- include('../../partials/icons/loader.ejs') %>
+                    </button>
+                    <% } else{%>
+                    <button type="button" class="fully_complete_button">Betaald!
+                        <%- include('../../partials/icons/complete.ejs') %>
+                    </button>
+                    <p class="payed_message">Bedankt, je hebt de borg betaald. </p>
+                    <% } %>
                 </form>
             </section>
 
             <div class="next_buttons_container">
-                <form action="/cars/checkin/pay?car=<%= car.id %>" method="POST">
-                    <button id="uploadButton" class="checkin__next_button">Betalen</button>
-                </form>
+                <% if(!payed){ %>
+                <a href="/cars/checkin/confirm?car=<%=car.id%>" id="uploadButton"
+                    class="checkin__next_button disabled">Verder</a>
+                <% } else{%>
+                <a href="/cars/checkin/confirm?car=<%=car.id%>" id="uploadButton"
+                    class="checkin__next_button">Verder</a>
+                <% } %>
                 <a href="/cars/checkin/confirm?car=<%= car.id %>">overslaan</a>
             </div>
 

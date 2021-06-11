@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('../../partials/head.ejs') %>
 
-<body class="checkin__check_info checkin checkin__driver_info">
+<body class="checkin__check_info checkin checkin__driver_info checkin__driver_done">
     <%- include('../../partials/checkin-navigation.ejs') %>
 
     <main>
@@ -14,8 +14,10 @@
                 overgeslagen, kunnen deze op
                 locatie worden afgehandeld.
             </p>
+            <%- include('../../partials/icons/complete.ejs') %>
+        </section>
 
-            <a class="checkin__next_button" href="<%= nextUrl %>">Verder</a>
+        <a class="checkin__next_button" href="<%= nextUrl %>">Verder</a>
         </section>
         <%- include('../../partials/progress-bar.ejs') %>
 

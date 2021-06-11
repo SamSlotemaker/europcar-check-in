@@ -55,9 +55,18 @@ export function verifyDocument(req, res) {
 export function pay(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
+
     car.depositPayed = true;
 
-    res.redirect(`/cars/checkin/confirm?car=${car.id}`)
+    let skipped = checkSkipped(req.query.skipped)
+
+    let status = { infoStatus: 'done', verifyStatus: 'done', paymentStatus: 'doing' }
+
+    let openField = req.body.method
+
+    let backUrl = `/cars/checkin/driverDone?car=${car.id}`
+
+    res.render('checkin/deposit', { title: 'check-in', car, user, backUrl, status, skipped, payed: car.depositPayed, open: openField })
 }
 
 export function complete(req, res) {

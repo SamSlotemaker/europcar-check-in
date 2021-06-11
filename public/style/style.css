@@ -151,7 +151,8 @@ a.disabled {
 }
 
 /* completed button state */
-a.fully_complete_button {
+a.fully_complete_button,
+button.fully_complete_button {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -278,7 +279,7 @@ a.fully_complete_button {
 }
 
 .reservations__cars {
-    width: 100vw;
+    width: 100%;
 }
 
 @media screen and (min-width: 1000px) {
@@ -508,10 +509,13 @@ a.fully_complete_button {
     }
 }
 
-
 .checkin main {
     min-height: calc(85vh);
     position: relative;
+    max-width: 500px;
+    margin: auto;
+    padding: 0em 2.5em;
+
 }
 
 .checkin nav ul {
@@ -533,6 +537,15 @@ a.fully_complete_button {
 
 .checkin nav li svg path {
     fill: white;
+}
+
+.checkin a.checkin__back_button {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: white;
+    font-weight: 300;
+    box-shadow: none;
+    font-size: 1em;
 }
 
 .change_info {
@@ -582,7 +595,7 @@ a.fully_complete_button {
 /* checkin progress bar */
 .checkin__progress_bar {
     position: absolute;
-    bottom: 1em;
+    bottom: 2em;
     left: 50%;
     transform: translate(-50%);
     width: 12em;
@@ -662,6 +675,7 @@ a.fully_complete_button {
 }
 
 
+
 .checkin__progress_bar li.done {
     background-color: var(--positive);
 }
@@ -723,10 +737,6 @@ a.fully_complete_button {
     font-size: 2.5em;
     font-weight: 400;
     margin: .8em auto;
-}
-
-.checkin main {
-    padding: 0em 2.5em;
 }
 
 .checkin__introduction_list {
@@ -814,17 +824,28 @@ a.fully_complete_button {
 
 /* check info 2 */
 
-.checkin__check_info2 main .info_list {
+.checkin__check_info2 main .info_list,
+.checkin__deposit main .info_list {
     max-width: 10em;
 }
 
-.checkin__check_info2 main .info_list li:nth-of-type(2) {
+.checkin__check_info2 main .info_list li,
+.checkin__deposit main .info_list li {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.checkin__check_info2 main .info_list li:nth-of-type(2),
+.checkin__deposit main .info_list li:nth-of-type(2) {
     padding-bottom: .5em;
     border-bottom: solid 1px var(--primary);
 }
 
-.checkin__check_info2 main .info_list li:nth-of-type(3) {
+.checkin__check_info2 main .info_list li:nth-of-type(3),
+.checkin__deposit main .info_list li:nth-of-type(3) {
     margin-top: .5em;
+    font-weight: 600;
 }
 
 
@@ -856,81 +877,6 @@ a.fully_complete_button {
     font-size: 1.2em;
 }
 
-/* person verification */
-.checkin__person_verification_photo h1 {
-    text-align: center;
-    margin: 0;
-}
-
-/* person verification */
-.person_photo_container {
-    position: relative;
-    height: 45vh;
-    max-width: 420px;
-    margin: auto;
-}
-
-.person_photo_container .refresh_button {
-    filter: drop-shadow(1px 1px 1px black);
-    position: absolute;
-    right: -0.5em;
-    top: -0.5em;
-    display: block;
-    z-index: 1;
-    height: 1.5em;
-    width: 1.5em;
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-    margin: 0;
-}
-
-
-.person_photo_container .refresh_button svg {
-    height: 1.5em;
-    width: 1.5em;
-    fill: white;
-}
-
-
-.person_photo_container video,
-.person_photo_container canvas {
-    border-radius: 1em;
-    transform: scaleX(-1);
-    object-fit: cover;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.person_photo_container canvas {
-    z-index: -1;
-    background-color: #000;
-}
-
-/* video */
-
-.checkin__person_verification_photo .picture_button {
-    filter: drop-shadow(1px 1px 1px black);
-    position: absolute;
-    bottom: -1em;
-    left: calc(50% - 1em);
-    display: block;
-    height: 2em;
-    width: 2em;
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-    margin: 0;
-}
-
-.checkin__person_verification_photo .picture_button svg {
-    fill: white;
-    display: grid;
-    place-items: center;
-    height: 2em;
-    width: 2em;
-}
 
 /* document verification page */
 .checkin__document_verification h1 {
@@ -942,8 +888,6 @@ a.fully_complete_button {
     display: grid;
     place-items: center;
 }
-
-.input.verif-submit {}
 
 .checkin__document_verification .checkin__step_complete svg {
     fill: white;
@@ -957,12 +901,35 @@ a.fully_complete_button {
     font-weight: 400;
 }
 
-/* hide loader at default */
-.checkin__document_verification .loader {
+/* ************** */
+/* Driver done page */
+.checkin__driver_done main>section>svg {
+    fill: white;
+    display: block;
+    width: 40vw;
+    max-width: 12em;
+    margin: 2em auto;
+}
+
+
+/* ************ */
+/* deposit page */
+.checkin__deposit section:first-of-type {
+    margin: 2em 0em;
+}
+
+.checkin__deposit #payment_form form {
     display: none;
 }
 
-/* deposit page */
+.checkin__deposit #payment_form.showIdeal .fieldset_ideal {
+    display: block;
+}
+
+.checkin__deposit #payment_form.showCreditcard .fieldset_creditcard {
+    display: block;
+}
+
 #payment_form>section h2 {
     font-size: 1em;
     font-weight: 400;
@@ -985,8 +952,8 @@ a.fully_complete_button {
     opacity: 0;
 }
 
-
 .checkin__deposit #payment_form>section label {
+    cursor: pointer;
     opacity: .7;
     margin-right: 1em;
     padding: .5em .5em;
@@ -1003,22 +970,105 @@ a.fully_complete_button {
     opacity: 1;
 }
 
+.checkin__deposit #payment_form>form {
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+    padding: 1em;
+}
 
-/* fields */
-.checkin__deposit #payment_form form {
-    margin: 2em 0em;
+.checkin__deposit #payment_form>form:nth-of-type(2) {
+    margin: 1em 0em;
+}
+
+.checkin__deposit #payment_form>form:nth-of-type(2) label,
+input {
+    display: block;
+}
+
+.checkin__deposit #payment_form>form:nth-of-type(2) label {
+    font-weight: 500;
+    margin-bottom: .2em;
+}
+
+.checkin__deposit #payment_form>form:nth-of-type(2) input {
+    font-size: 1.2em;
+    padding: .2em;
+    margin-bottom: .5em;
+}
+
+.checkin__deposit #payment_form>form:nth-of-type(2) #expire {
+    width: 5em;
+}
+
+.checkin__deposit #payment_form>form:nth-of-type(2) #securitycode {
+    width: 5em;
+}
+
+.checkin__deposit .checkin__progress_bar {
+    position: static;
+    margin: 2em auto;
+    transform: none;
+}
+
+.checkin__deposit select {
+    padding: .3em;
+}
+
+.checkin__deposit button {
+    font-size: 1em;
+    width: 10em;
+    height: 3em;
+}
+
+
+.checkin__deposit .loader {
     display: none;
-    border: none;
 }
 
-.checkin__deposit #payment_form.showIdeal .fieldset_ideal {
+/* while paying */
+.checkin__deposit .paying button:first-of-type>span {
+    display: none;
+}
+
+.checkin__deposit .paying .loader {
     display: block;
 }
 
-.checkin__deposit #payment_form.showCreditcard .fieldset_creditcard {
+/* CSS LOADER */
+.checkin__deposit .loader {
+    --total-width: 2em;
+    margin: auto;
+    --ball-color: var(--accent);
+    --ball-width: calc(var(--total-width) / 4);
+}
+
+/* open correct field after paying */
+.checkin__deposit #payment_form.ideal form:nth-of-type(1) {
     display: block;
 }
 
+.checkin__deposit #payment_form.creditcard form:nth-of-type(2) {
+    display: block;
+}
+
+/* disable radio's after paying  */
+.checkin__deposit #payment_form.ideal section,
+.checkin__deposit #payment_form.creditcard section {
+    pointer-events: none;
+}
+
+.payed_message {
+    background-color: var(--accent);
+    padding: 1em;
+    border-radius: .5em;
+    color: white;
+}
+
+
+
+
+/* ************************* */
 /* checkin confirmation page */
 
 .checkin__confirmation .checkin__introduction_list {
@@ -1058,6 +1108,16 @@ a.fully_complete_button {
 .checkin__confirmation .checkin__introduction_list li:nth-of-type(3).notDone::before {
     background-image: url(/style/images/credit-cardWhite.png);
     background-color: var(--accent2)
+}
+
+.checkin__confirmation li.notDone a {
+    background-color: var(--accent2);
+    width: 8em;
+    margin: 0;
+    text-align: center;
+    box-shadow: none;
+    font-weight: 400;
+    color: white;
 }
 
 

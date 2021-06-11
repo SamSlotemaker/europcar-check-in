@@ -84,7 +84,7 @@ const users = [
                 id: '090911',
                 car: 'BMW',
                 model: '5 serie',
-                startRent: new Date('June 10, 2021 13:30:00'),
+                startRent: new Date('June 14, 2021 13:30:00'),
                 endRent: new Date('June 17, 2021 16:00:00'),
                 imgUrl: '/style/images/5serie.jpg',
                 allStepsComplete: false,

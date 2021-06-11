@@ -19,11 +19,17 @@
             <li class="<%= status.verifyStatus %>">
                 <div>
                     <h2>Persoon verificatie</h2>
+                    <% if(status.verifyStatus == 'notDone'){ %>
+                    <a class="button" href="/cars/checkin/verificationInfo?car=<%= car.id %>">Afmaken</a>
+                    <% } %>
                 </div>
             </li>
             <li class="<%= status.paymentStatus %>">
                 <div>
                     <h2>Borg betalen</h2>
+                    <% if(status.paymentStatus == 'notDone'){ %>
+                    <a class="button" href="/cars/checkin/deposit?car=<%= car.id %>">Afmaken</a>
+                    <% } %>
                 </div>
             </li>
         </ul>

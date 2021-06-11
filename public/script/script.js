@@ -9,6 +9,17 @@ noJsMessages.forEach(message => {
     message.style.display = 'none'
 })
 
+//change all backbuttons on checkin to lastvisited page
+const checkinBackButton = document.querySelector('.checkin__back_button')
+if (checkinBackButton) {
+    checkinBackButton.href = '#'
+    //go back in history when back is clicked
+    checkinBackButton.addEventListener('click', () => {
+        window.history.back()
+    })
+}
+
+
 function handleDocumentFormSubmit(e) {
     e.preventDefault()
 
@@ -57,4 +68,35 @@ function saveImage(url) {
     a.href = url;
     a.download = url;
     // a.click()
+}
+
+
+// deposit pay buttons
+const payForms = document.querySelectorAll('.checkin__deposit #payment_form form')
+const payedButtons = document.querySelectorAll('.checkin__deposit #payment_form form button:last-of-type')
+
+function handlePayment(event) {
+    event.preventDefault()
+    event.target.classList.add('paying')
+
+    setTimeout(() => {
+        event.target.submit()
+    }, 1000)
+}
+
+if (payForms) {
+    payForms.forEach(form => {
+        form.addEventListener('submit', handlePayment)
+    })
+}
+
+// scroll to bottom when payed
+if (payedButtons) {
+    payedButtons.forEach(button => {
+        if (button.textContent.includes('Betaald')) {
+            window.scrollTo(0, document.body.scrollHeight);
+            return;
+        }
+
+    })
 }
