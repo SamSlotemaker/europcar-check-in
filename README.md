@@ -12,8 +12,28 @@ In deze repo vind je de sourcecode voor een auto check-in applicatie waaraan ik 
 
 [Trello board](https://trello.com/b/M7rEyn08/europcar-check-in) 
 
-[Design rationale](https://github.com/SamSlotemaker/europcar-check-in/blob/master/docs/design-rationale.pdf)
+[Design rationale](https://github.com/SamSlotemaker/europcar-check-in/blob/master/design-rationale.pdf)
 
+## Table of Content
+- [:gear: Installation](#-gear--installation)
+- [:book: Debriefing](#-book--debriefing)
+  * [Probleemstelling](#probleemstelling)
+  * [Opdracht omschrijving](#opdracht-omschrijving)
+- [:computer: Code structure](#code-structure)
+  * [Actor Diagram](#actor-diagram)
+  * [Code consistency](#code-consistency)
+    + [function naamgeving](#function-naamgeving)
+    + [Code style](#code-style)
+    + [Code comments](#code-comments)
+- [:minidisc: Data](#data)
+- [:package: NPM packages](#-package--npm-packages)
+  * [Dotenv](#dotenv)
+  * [Ejs](#ejs)
+  * [Express](#express)
+  * [Nodemon](#nodemon)
+  * [EsLint](#eslint)
+  * [Qrcode](#qrcode)
+  * [Cookie-session](#cookie-session)
 
 ---
 
@@ -53,14 +73,14 @@ Een gebruiker reserveert vaak ruim van te voren een auto om te huren. Het inchec
 Maak een digitaal incheckproces voor Europcar, zodat er weinig tot geen fysieke interactie nodig is voor het ophalen van de huurauto. Het incheckproces bestaat uit het inloggen van de gebruiker, het inchecken van de reservering, bevestigen van de identiteit en rijbewijs, en het reserveren van de borg op de desbetreffende creditcard. 
 
 ---
-## Code structure
+## :computer: Code structure
 
 ### Actor Diagram
 ![Web 1920 – 3](https://user-images.githubusercontent.com/60625329/121935435-b7cdf680-cd48-11eb-8985-4320c89e5196.png)
 
 ### Code consistency
 
-#### function naamgeving
+#### Function naamgeving
 functions krijgen namen die aangeven wat de functie doet. 
 
 Post requests zullen de actie als naam hebben, bijvoorbeeld: 
@@ -102,7 +122,7 @@ function Book(title, author) {
 
 ---
 
-## Data
+## :minidisc: Data
 Data waar de applicatie op gebouwd is:
 <details>
 <summary>User object</summary>
