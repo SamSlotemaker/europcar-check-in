@@ -92,6 +92,12 @@ p.veriff-description {
     display: none;
 }
 
+.veriff-message span {
+    color: rgb(133, 0, 0);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
 
 
 body:not(.checkin)>header {
@@ -418,7 +424,6 @@ button.fully_complete_button {
     width: 80%;
     margin: auto;
     max-width: 500px;
-    min-height: 30em;
     margin-bottom: 3em;
 }
 
@@ -440,7 +445,7 @@ button.fully_complete_button {
 }
 
 .detail .qr_code_card a {
-    width: 13em;
+    max-width: 13em;
     text-align: center;
     color: white;
     background-color: var(--accent);
@@ -519,7 +524,7 @@ button.fully_complete_button {
 }
 
 .checkin nav ul {
-    padding: 1em;
+    padding: 0em 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -848,8 +853,19 @@ button.fully_complete_button {
     font-weight: 600;
 }
 
-
+/* ********************** */
 /* CHECKIN VERIFICATION INFO */
+
+/* checkin progress bar animation */
+.checkin__verification_info .checkin__progress_bar li:nth-of-type(1) {
+    animation: changeColorDone .5s ease-in
+}
+
+.checkin__verification_info .checkin__progress_bar li:nth-of-type(2) {
+    background-color: var(--secondary4);
+    animation: changeColorDoing .5s .5s ease-in forwards
+}
+
 .checkin__verification_info p {
     font-size: 1.2em;
     width: 17em;
@@ -914,6 +930,17 @@ button.fully_complete_button {
 
 /* ************ */
 /* deposit page */
+
+/* progres bar animations */
+.checkin__deposit .checkin__progress_bar li:nth-of-type(2) {
+    animation: changeColorDone .5s ease-in
+}
+
+.checkin__deposit .checkin__progress_bar li:nth-of-type(3) {
+    background-color: var(--secondary4);
+    animation: changeColorDoing .5s .5s ease-in forwards
+}
+
 .checkin__deposit section:first-of-type {
     margin: 2em 0em;
 }
@@ -1065,12 +1092,8 @@ input {
     color: white;
 }
 
-
-
-
 /* ************************* */
 /* checkin confirmation page */
-
 .checkin__confirmation .checkin__introduction_list {
     margin: 2em 0em;
 }
@@ -1158,4 +1181,76 @@ input {
     display: block;
     margin-top: 1em;
     font-weight: 400;
+}
+
+/* ******** */
+/* PAGE TRANSITIONS */
+.checkin__check_info main>section:nth-of-type(1),
+.checkin__check_info2 main>section:nth-of-type(1),
+.checkin__document_verification main>section:nth-of-type(1) {
+    opacity: 0;
+    animation: fade-in-page .4s ease-in forwards;
+}
+
+.checkin__driver_info main>section:nth-of-type(1) {
+    opacity: 1;
+    animation: none;
+}
+
+.checkin__check_info main>section:nth-of-type(1).fade-out,
+.checkin__check_info2 main>section:nth-of-type(1).fade-out,
+.checkin__document_verification main>section:nth-of-type(1).fade-out {
+    animation: fade-out-page .4s ease-in forwards;
+}
+
+
+/* PAGE TRANSITIONS */
+@keyframes fade-in-page {
+    0% {
+        opacity: 0;
+        transform: translateX(20%)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%)
+    }
+}
+
+@keyframes fade-out-page {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* progressbar animations */
+@keyframes changeColorDone {
+    0% {
+        transform: scale(1);
+        background-color: var(--primary);
+    }
+
+    50% {
+        transform: scale(1.2);
+        background-color: var(--primary);
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: var(--positive);
+    }
+}
+
+@keyframes changeColorDoing {
+    0% {
+        background-color: var(--secondary4);
+    }
+
+    100% {
+        background-color: var(--primary);
+    }
 }

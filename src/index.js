@@ -64,9 +64,6 @@ app.post('/cars/checkin/verifyDocument', verifyDocument)
 app.post('/cars/checkin/pay', pay)
 app.post('/cars/checkin/complete', complete)
 
-
-
-
 //profile
 app.get('/profile', checkLogin, (req, res) => {
     let user = findUser(req.session.userID)

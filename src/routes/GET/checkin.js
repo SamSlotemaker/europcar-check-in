@@ -207,7 +207,7 @@ export function driverDonePage(req, res) {
 
     let backUrl = `/cars/checkin/documentVerification?car=${car.id}&driver=${driverNumber}`
 
-    let status = { infoStatus: 'done', verifyStatus: 'done', paymentStatus: 'blanc' }
+    let status = { infoStatus: 'done', verifyStatus: 'doing', paymentStatus: 'blanc' }
 
     res.render('checkin/driverDone', { title: 'check-in', car, user, driver, driverNumber, backUrl, nextUrl, status, skipped })
 }

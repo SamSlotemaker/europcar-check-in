@@ -46,6 +46,7 @@
                     <button type="button" class="fully_complete_button">Betaald!
                         <%- include('../../partials/icons/complete.ejs') %>
                     </button>
+                    <p class="payed_message">Bedankt, je hebt de borg betaald. </p>
                     <% } %>
                 </form>
                 <form class="fieldset_creditcard" action="/cars/checkin/pay?car=<%= car.id %>" method="POST">

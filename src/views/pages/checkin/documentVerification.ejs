@@ -19,10 +19,12 @@
                 </section>
                 <% } else { %>
                 <section>
-                    <div id='veriff-root'></div>
-                    <p class="veriff-message">Je wordt doorgestuurd naar Veriff, een externe partij die de verificatie
+                    <p class="veriff-message"><span>Let op!</span> wordt doorgestuurd naar Veriff, een externe partij
+                        die de verificatie
                         van het rijbewijs
                         afhandelt.</p>
+                    <div id='veriff-root'></div>
+
                     <p class="no-javascript">
                         Je hebt JavaScript nodig om jezelf te verifiëren, sla deze stap voor nu over of schakel
                         JavaScript in.
@@ -49,6 +51,8 @@
     <script src='https://cdn.veriff.me/sdk/js/1.1/veriff.min.js'></script>
     <script src='https://cdn.veriff.me/incontext/js/v1/veriff.js'></script>
     <script src="/script/verification.js"></script>
+    <script src="/script/transitions.js"></script>
+
 </body>
 
 </html>
