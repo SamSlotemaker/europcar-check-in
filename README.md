@@ -10,7 +10,10 @@ Password: password
 
 In deze repo vind je de sourcecode voor een auto check-in applicatie waaraan ik gewerkt heb voor Q42. 
 
-Trello board: https://trello.com/b/M7rEyn08/europcar-check-in
+[Trello board](https://trello.com/b/M7rEyn08/europcar-check-in) 
+
+[Design rationale](https://github.com/SamSlotemaker/europcar-check-in/blob/master/docs/design-rationale.pdf)
+
 
 ---
 
