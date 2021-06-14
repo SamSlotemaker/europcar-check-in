@@ -96,6 +96,8 @@ function Book(title, author) {
 }
 ```
 
+---
+
 ## Data
 Data waar de applicatie op gebouwd is:
 <details>
@@ -169,6 +171,7 @@ Data waar de applicatie op gebouwd is:
 ```
 </details>
 
+---
 
 ## :package: NPM packages
 Discriptions are from the websites given or written by me when not existing.
