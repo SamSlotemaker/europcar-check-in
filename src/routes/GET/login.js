@@ -1,4 +1,9 @@
 /**
+ * login routes.
+ * @module loginRoutes
+ */
+
+/**
  * renders the static login page
  * @param {string} req - req object
  * @param {string} res - response object

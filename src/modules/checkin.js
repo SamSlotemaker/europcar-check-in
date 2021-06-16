@@ -1,5 +1,10 @@
 
 /**
+ * checkin module.
+ * @module checkinUtils
+ */
+
+/**
  * returns true or false, depending if the page was skipped to
  * @param {string} query - query, true or false
  */

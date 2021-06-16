@@ -1,6 +1,12 @@
+/**
+ * date module.
+ * @module dateUtils
+ */
+
 const monthNames = ["januari", "februari", "maart", "april", "mei", "juni",
     "juli", "augustus", "september", "oktober", "november", "december"
 ];
+
 
 /**
  * return formatted time as in hours:minutes

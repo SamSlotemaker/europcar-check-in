@@ -1,4 +1,9 @@
 /**
+ * car module.
+ * @module carUtils
+ */
+
+/**
  * Returns a car.
  * @param {object} user - Userobject containing reservations
  * @param {string} carID - The id of the car reservation

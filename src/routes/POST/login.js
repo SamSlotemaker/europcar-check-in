@@ -1,6 +1,12 @@
 import { findUser, userValidates } from '../../modules/login.js'
 
 /**
+ * login POST routes.
+ * @module loginRoutesPOST
+ */
+
+
+/**
  * handles the post request for the user login
  * ON SUCCESS: Redirect to overview page
  * ON ERROR: render login with error
