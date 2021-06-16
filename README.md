@@ -75,6 +75,9 @@ Maak een digitaal incheckproces voor Europcar, zodat er weinig tot geen fysieke 
 ---
 ## :computer: Code structure
 
+### Code Docs
+[code doc generated with JSDoc](https://samslotemaker.github.io/europcar-check-in/docs/codeDoc/index.html)
+
 ### Actor Diagram
 ![Web 1920 – 3](https://user-images.githubusercontent.com/60625329/121935435-b7cdf680-cd48-11eb-8985-4320c89e5196.png)
 
