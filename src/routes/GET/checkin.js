@@ -6,7 +6,7 @@ import { checkSkipped, checkAllDriversCompleted } from '../../modules/checkin.js
 
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * renders checkin page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -22,7 +22,7 @@ export function checkinPage(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ *  renders check info page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -47,7 +47,7 @@ export function checkInfoPage(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * renders check info 2 page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -63,7 +63,7 @@ export function checkInfo2Page(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * renders verification info page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -92,7 +92,7 @@ export function verificationInfoPage(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * render driver info page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -126,7 +126,7 @@ export function driverInfoPage(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * render document verification page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -149,7 +149,7 @@ export function documentVerificationPage(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * renders the page that confirms driver lisence validation
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -172,7 +172,7 @@ export function callbackValidation(req, res) {
 
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * renders driver completed page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -213,7 +213,7 @@ export function driverDonePage(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * renders pay deposit page
  * @param {string} req - req object
  * @param {string} res - response object
  */
@@ -236,7 +236,7 @@ export function depositPage(req, res) {
 }
 
 /**
- * gets users and selected car from the cookie and url parameter and then renders checkin page for that car
+ * renders confirm checkin page
  * @param {string} req - req object
  * @param {string} res - response object
  */

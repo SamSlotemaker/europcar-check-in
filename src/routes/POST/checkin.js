@@ -16,7 +16,7 @@ export function startCheckin(req, res) {
     res.redirect(`/cars/checkin/?car=${car.id}`)
 }
 /**
- * handles the car checkin and then renders the checked in detail page
+ * handles the check info and redirects it to the next one
  * @param {object} req - req object
  * @param {object} res - response object
  */
@@ -27,7 +27,11 @@ export function checkInfo(req, res) {
     res.redirect(`/cars/checkin/checkInfo2?car=${car.id}`)
 }
 
-
+/**
+ * handles the check info and sets it's status to complete, redirects to verification info
+ * @param {object} req - req object
+ * @param {object} res - response object
+ */
 export function checkInfo2(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
@@ -38,7 +42,11 @@ export function checkInfo2(req, res) {
 }
 
 
-
+/**
+ * handles document validation, sets status to complete for that driver and sends it to the driver done page
+ * @param {object} req - req object
+ * @param {object} res - response object
+ */
 export function verifyDocument(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
@@ -51,7 +59,11 @@ export function verifyDocument(req, res) {
     res.redirect(`/cars/checkin/driverDone?car=${car.id}&driver=${driverNumber}`)
 
 }
-
+/**
+ * handles the deposit payment, sets status to complete and sends user to checkin complete page
+ * @param {object} req - req object
+ * @param {object} res - response object
+ */
 export function pay(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
@@ -62,6 +74,7 @@ export function pay(req, res) {
 
     let status = { infoStatus: 'done', verifyStatus: 'done', paymentStatus: 'doing' }
 
+    //check which field needs to be opend for payed status, ideal or creditcard
     let openField = req.body.method
 
     let backUrl = `/cars/checkin/driverDone?car=${car.id}`
@@ -69,6 +82,11 @@ export function pay(req, res) {
     res.render('checkin/deposit', { title: 'check-in', car, user, backUrl, status, skipped, payed: car.depositPayed, open: openField })
 }
 
+/**
+ * handles the checkin completion, sets status to be complete and renders detail page
+ * @param {object} req - req object
+ * @param {object} res - response object
+ */
 export function complete(req, res) {
     let user = findUser(req.session.userID)
     let car = findCar(user, req.query.car)
@@ -76,5 +94,5 @@ export function complete(req, res) {
 
     car.allStepsComplete = checkCompleteCheckedIn(car)
     console.log(car)
-    res.redirect(`/cars/`)
+    res.redirect(`/cars/${car.id}`)
 }
