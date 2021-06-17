@@ -76,11 +76,59 @@ const users = [
         },
         reservations: [
             {
+                id: '090912',
+                car: 'Audi',
+                model: 'A3',
+                startRent: new Date('June 15, 2021 13:30:00'),
+                endRent: new Date('June 18, 2021 16:00:00'),
+                imgUrl: '/style/images/a3.jpg',
+                allStepsComplete: false,
+                checkinStarted: false,
+                checkedIn: false,
+                infoConfirmed: false,
+                drivers: [
+                    {
+                        info: {
+                            name: 'Sam',
+                            phone: '0612425243',
+                            birthDate: '06-01-2000',
+                            email: 'sam.slotemaker@test.nl'
+                        },
+                        documentValidated: false
+                    },
+                ],
+                depositPayed: false
+            },
+            {
+                id: '090912',
+                car: 'Audi',
+                model: 'A3',
+                startRent: new Date('Juli 04, 2021 13:30:00'),
+                endRent: new Date('Juli 20, 2021 16:00:00'),
+                imgUrl: '/style/images/a3.jpg',
+                allStepsComplete: false,
+                checkinStarted: false,
+                checkedIn: false,
+                infoConfirmed: false,
+                drivers: [
+                    {
+                        info: {
+                            name: 'Sam',
+                            phone: '0612425243',
+                            birthDate: '06-01-2000',
+                            email: 'sam.slotemaker@test.nl'
+                        },
+                        documentValidated: false
+                    },
+                ],
+                depositPayed: false
+            },
+            {
                 id: '090911',
                 car: 'BMW',
                 model: '5 serie',
-                startRent: new Date('June 14, 2021 13:30:00'),
-                endRent: new Date('June 17, 2021 16:00:00'),
+                startRent: new Date('June 22, 2021 13:30:00'),
+                endRent: new Date('June 30, 2021 16:00:00'),
                 imgUrl: '/style/images/5serie.jpg',
                 allStepsComplete: false,
                 checkinStarted: false,
@@ -105,30 +153,6 @@ const users = [
                         },
                         documentValidated: false
                     }
-                ],
-                depositPayed: false
-            },
-            {
-                id: '090912',
-                car: 'Audi',
-                model: 'A3',
-                startRent: new Date('juni 22, 2021 13:30:00'),
-                endRent: new Date('Juli 20, 2021 16:00:00'),
-                imgUrl: '/style/images/a3.jpg',
-                allStepsComplete: false,
-                checkinStarted: false,
-                checkedIn: false,
-                infoConfirmed: false,
-                drivers: [
-                    {
-                        info: {
-                            name: 'Sam',
-                            phone: '0612425243',
-                            birthDate: '06-01-2000',
-                            email: 'sam.slotemaker@test.nl'
-                        },
-                        documentValidated: false
-                    },
                 ],
                 depositPayed: false
             }

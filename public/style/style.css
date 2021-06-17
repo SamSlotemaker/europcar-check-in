@@ -287,6 +287,7 @@ button.fully_complete_button {
 
 .reservations__cars {
     width: 100%;
+
 }
 
 @media screen and (min-width: 1000px) {
@@ -295,6 +296,7 @@ button.fully_complete_button {
         padding: 1em;
         grid-template-columns: 1fr 1fr;
         grid-gap: 2em;
+        font-size: 1.2em;
     }
 
     .reservations__cars>li img {
@@ -334,6 +336,22 @@ button.fully_complete_button {
 .reservations__cars>li p {
     margin-top: 1em;
     font-weight: 400;
+}
+
+.checkin_expired {
+    background: var(--error);
+    padding: .5em;
+    border-radius: 0.5em;
+    filter: brightness(.7);
+    opacity: .7;
+}
+
+.checkin_coming {
+    background: var(--accent2);
+    padding: .5em;
+    border-radius: 0.5em;
+    filter: brightness(.7);
+    opacity: .7;
 }
 
 .reservations__cars>li strong span {
