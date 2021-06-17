@@ -12,6 +12,7 @@ In deze repo vind je de sourcecode voor een auto check-in applicatie waaraan ik 
 
 [Trello board](https://trello.com/b/M7rEyn08/europcar-check-in) 
 
+[Product biografie](https://github.com/SamSlotemaker/europcar-check-in/blob/master/productbiografie.pdf)
 [Design rationale](https://github.com/SamSlotemaker/europcar-check-in/blob/master/design-rationale.pdf)
 
 ## Table of Content
