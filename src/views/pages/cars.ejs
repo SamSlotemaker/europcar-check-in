@@ -40,9 +40,10 @@
 
                 <% } %>
                 <% } else if(dateDifferences[index] > 0) { %>
-                <p class="checkin_expired">Incheckperiode verlopen, check in op locatie.</p>
+                <p class="checkin_expired"><span>Incheckperiode verlopen</span>, check in op locatie.</p>
                 <% } else { %>
-                <p class="checkin_coming">Je kunt over <%= dateDifferences[index]*-1 - 7 %> dagen inchecken</p>
+                <p class="checkin_coming">Je kunt over <span> <%= dateDifferences[index]*-1 - 7 %></span> dagen
+                    inchecken</p>
                 <% } %>
 
             </header>

@@ -338,21 +338,13 @@ button.fully_complete_button {
     font-weight: 400;
 }
 
-.checkin_expired {
-    background: var(--error);
-    padding: .5em;
-    border-radius: 0.5em;
-    filter: brightness(.7);
-    opacity: .7;
+.checkin_expired span,
+.checkin_coming span {
+    font-weight: 600;
+    font-size: 1.1em;
 }
 
-.checkin_coming {
-    background: var(--accent2);
-    padding: .5em;
-    border-radius: 0.5em;
-    filter: brightness(.7);
-    opacity: .7;
-}
+
 
 .reservations__cars>li strong span {
     font-weight: 700;
